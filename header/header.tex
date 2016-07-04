@@ -99,6 +99,8 @@
 \newcolumntype{L}[1]{>{\raggedleft\arraybackslash}p{#1}} %Tabelle rechtsausgerichtet
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
+
+
 %%%%%%%%%%
 % Farben %
 %%%%%%%%%%
@@ -108,7 +110,70 @@
 \definecolor{grey}{rgb}{0.8,0.8,0.8}
 \definecolor{green}{rgb}{0,.8,0.05}
 \definecolor{brown}{rgb}{0.603,0,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
 
+%%%%%%%%%%%%%%%
+% Code Layout %
+%https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+%%%%%%%%%%%%%%%
+
+\lstset{ %
+    backgroundcolor=\color{white},   % choose the background color; you must add        \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+    breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{green},      % comment style
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=single,	                   % adds a frame around the code
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    language=C++,                    % the language of the code
+    otherkeywords={*,...},           % if you want to add more keywords to the set
+    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{grey}, % the style that is used for the line-numbers
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    tabsize=2,	                     % sets default tabsize to 2 spaces
+    title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\lstdefinestyle{customc++}{
+    belowcaptionskip=1\baselineskip,
+    breaklines=true,
+    % frame=L,
+    xleftmargin=\parindent,
+    language=C++,
+    showstringspaces=false,
+    basicstyle=\footnotesize\ttfamily,
+    keywordstyle=\bfseries\color{blue},
+    commentstyle=\itshape\color{green},
+    identifierstyle=\color{black},
+    stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customasm}{    
+     belowcaptionskip=1\baselineskip,
+     breaklines=true,
+     % frame=L,
+     xleftmargin=\parindent,
+     language=asm,
+     showstringspaces=false,
+     basicstyle=\footnotesize\ttfamily,
+     keywordstyle=\bfseries\color{blue},
+     commentstyle=\itshape\color{green},
+     identifierstyle=\color{black},
+     stringstyle=\color{orange},   
+}
+
+%choose customstyle in DOC with \lstinputlisting[style=custom]{path}
+\lstset{escapechar=@,style=customc++} %default
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Mathematische Operatoren %
@@ -148,6 +213,7 @@
 	\put(0.2,0.1){\circle*{0.14}}\put(0.27,0.1){\line(1,0){0.45}}\put(0.77,0.1){\circle{0.14}}
 	\end{picture}
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Allgemeine Einstellungen %
