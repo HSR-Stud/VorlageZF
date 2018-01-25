@@ -1,8 +1,8 @@
 %BuG-Fix
 %Package pdf Error: Driver file ................ not found
 %If you have a luatex driver fail uncomment these lines
-\RequirePackage{luatex85}
-\def\pgfsysdriver{pgfsys-pdftex.def}
+%\RequirePackage{luatex85}
+%\def\pgfsysdriver{pgfsys-pdftex.def}
 
 % Genereller Header
 \documentclass[11pt,twoside,a4paper,fleqn]{article}
@@ -10,7 +10,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}	%ä,ü...
 % Seitenränder
-\usepackage[left=1cm,right=1cm,top=0.5cm,bottom=0.5cm,includeheadfoot]{geometry}
+\usepackage[left=1cm,right=1cm,top=0.5cm,bottom=0.2cm,includeheadfoot]{geometry}
+\setlength{\headsep}{5pt} 
 % Sprachpaket 
 \usepackage[english, ngerman]{babel} % Silbentrennung und Rechtschreibung Englisch und Deutsch
 
@@ -18,7 +19,7 @@
 %% Wichtige Packages %%
 %%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{amsmath}                % Allgemeine Matheumgebungen									
-\usepackage{amssymb}                % Fonts: msam,msbm, eufm & Mathesymbole, Mengen (lädt automatisch amsfonts)									
+%\usepackage{amssymb}                % Fonts: msam,msbm, eufm & Mathesymbole, Mengen (lädt automatisch amsfonts)									
 \usepackage{array}                  % \newcolumntype, \firsthline, ,\lasthline, m{width}, b{width}									
 \usepackage{caption}                % Bildunterschriften									
 \usepackage{enumitem}               % basic environments: enumerate, itemize, description									
@@ -30,8 +31,8 @@
 \usepackage{lastpage}               % Bspw. : Page 1 of 3 => \thepage\ of \pageref{LastPage}									
 \usepackage{listings}               % Erlaubt es Programmcode in der gewünschten Sprache zu hinterlegen (C++, Matlab,..). Definition der Sprache mit \lstset{language=name}..									
 \usepackage{longtable}              % Longtable erlaubt es Tabellen zu erstellen die bei der nächsten Seite weiterlaufen. (Bricht automatisch um)									
-\usepackage{mathabx}                % Mathesymbole									
-\usepackage{mathrsfs}               % \mathscr (Benötigt für Fourierreihen-Symbol)									
+%\usepackage{mathabx}                % Mathesymbole									
+%\usepackage{mathrsfs}               % \mathscr (Benötigt für Fourierreihen-Symbol)									
 %\usepackage{mathtools}              % Extension package to amsmath									
 \usepackage{multicol}               % multicols-Umgebung \begin{multicols}{3} erzeugt Abschnitt mit 3 Spalten									
 \usepackage{multirow}               % Tabelle: ermöglicht es Felder mehrerer Zeilen in einem zusammenzufassen									
@@ -40,8 +41,8 @@
 \usepackage{rotating}               % sideways, turn{degree}, rotate{degree}, sidewaysfigure, sidewaystable Umgebung									
 \usepackage{subcaption}             % Bildunterschriften für Subfigures									
 \usepackage{tabularx}               % tabularx-Umgebung: Hat feste Gesamtbreite, \begin{tabularx}{\textwidth}{c c c c c} X: Spalte mit variabler Breite, l, c, r, p{breite}, m{breite}									
-\usepackage{textcomp}               % text symbols: baht, bullet, copyright, musical-note, onequarter, section, yen									
-\usepackage{tikz}                   % Tikz Umgebung zur Grafikerzeugung									
+%\usepackage{textcomp}               % text symbols: baht, bullet, copyright, musical-note, onequarter, section, yen									
+%\usepackage{tikz}                   % Tikz Umgebung zur Grafikerzeugung									
 \usepackage{titlesec}               % Überschriften zu Textabstände
 \usepackage{trfsigns}               % Transformationszeichen \laplace, \Laplace..									
 \usepackage{trsym}                  % Weitere Laplace Zeichen erlaubt auch vertikale Transformationszeichen									
@@ -73,27 +74,6 @@
 \newcommand{\skriptsubsubsection}[2]{\subsubsection{#1 {\tiny Skript S. #2}}}
 
 \newcommand{\matlab}[1]{\footnotesize{(Matlab: \texttt{#1})}\normalsize{}}
-
-% Syntax: \bmu{Pfad zum Bild}{Bildgrösse}{Beschriftung des Bildes}
-\newcommand{\bl}[2]{
-	\begin{figure}[h]
-		\flushleft  % linksbuendig
-		\includegraphics[width=#1]{#2} \\
-	\end{figure}
-}
-\newcommand{\br}[2]{
-	\begin{figure}[h]
-		\flushright  % rechtsbuendig
-		\includegraphics[width=#1]{#2} \\
-	\end{figure}
-}
-
-\newcommand{\bild}[2]{
-	\begin{figure}[h]
-		\centering  % zentriert
-		\includegraphics[width=#1]{#2} \\
-	\end{figure}
-}
 
 \newcommand\tabbild[2][]{%
 	\raisebox{0pt}[\dimexpr\totalheight+\dp\strutbox\relax][\dp\strutbox]{%
