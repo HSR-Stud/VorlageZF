@@ -1,0 +1,129 @@
+\section{Beispiel}
+\LaTeX  hat eine gute Community $\rightarrow$ einfach Googeln\newline
+\subsection{Install}
+Reihenfolge beachten!\newline
+Latex-Installation\newline
+\begin{enumerate}
+    \item \href{https://miktex.org/download}{MikTex mit Adminrecht installieren}
+    \item \href{https://www.texstudio.org}{Texstudio mit Adminrecht installieren}
+    \item (MikTex Package aktualisieren mit MikTex Package Manager)
+\end{enumerate}
+
+Git-Installation mit Sourcetree / GitHub\newline
+\begin{itemize}
+    \item \href{https://www.sourcetreeapp.com/}{Sourcetree installieren für GUI-Git}\item \href{https://www.github.com/}{GitHub Account erstellen}
+\end{itemize}
+\subsection{Mathe Umgebung}
+Texstudio Shortcut: alt + shift + m
+\[ \varphi_A = \int_{A}^{Bezugspunkt}\vec{E}\cdot\vec{dl} \]
+
+\begin{equation*}
+\varphi_A = \int_{A}^{Bezugspunkt}\vec{E}\cdot\vec{dl}
+\end{equation*}
+
+
+\begin{equation}
+    \varphi_A = \int_{A}^{Bezugspunkt}\vec{E}\cdot\vec{dl}
+\end{equation}
+
+Texstudio Shortcut: ctrl + shift + m für inline \newline
+lorem $ \varphi_A = \int_{A}^{Bezugspunkt}\vec{E}\cdot\vec{dl}$ ipsum $ \varphi_A = \int_{A}^{Bezugspunkt}\vec{E}\cdot\vec{dl}$
+
+\subsection{Bidler einfügen}
+Achtung: Linux ist Casesensitiv $\rightarrow$ GrossKleinschriebung bei include Bilder beachten um kompatibilität zu gewährleisten (Wichtig mit Travis)\newline
+\includegraphics[width=0.1\linewidth]{images/HSR}
+
+\subsection{Tabelle}
+
+    
+    longtable für tabellen über mehrere Seiten
+    %Dies ist ein Kommentar
+    %TODO bsp
+    %arraystrech verändert die "`grösse"' der tabelle
+    %tabbild kann in Tabelle verwendete werden, damit das Bild nicht oben and er Tabelle klebt.
+    \renewcommand{\arraystretch}{2}
+\begin{longtable}{| p{.25\textwidth} | p{.40\textwidth} | p{.30\textwidth} |}
+    \firsthline
+    \textbf{Elektrische Kraft} \newline
+    \tabbild[width=3.5cm]{images/HSR} \newline {\tiny Die Kraftwirkung des geladenen Körpers (Q) auf eine elektrische Probeladung (q)}&
+    \begin{equation*}\vec{F_e}(r) = \dfrac{1}{2\pi\epsilon}\cdot\dfrac{Q\cdot q}{r}\cdot\vec{r_0}\end{equation*}
+    \begin{equation*}F_e(r) = \dfrac{\pi\cdot\epsilon\cdot U^2}{2\cdot r\cdot\left(ln\dfrac{r-R_1}{R_1}\right)^2}\end{equation*} & \newline
+    [${F_e}$] = $\dfrac{N}{m}$\newline \newline 
+    $\epsilon=\epsilon_0\cdot\epsilon_r\newline
+    \widehat{=}\,${\small dielektrische Permittivität}\newline 
+    $\epsilon_0 = 8.8542 \cdot 10^{-12}$ $\left[\dfrac{As}{Vm}\right]$ \newline
+    $\vec{r_0}=\dfrac{\vec{r}}{|\vec{r}|}\,\widehat{=}$ Einheitsvektor \newline  
+    Q, q$\,\widehat{=}\,$Linienladungsdichte$\,\left[\dfrac{C}{m}\right]$ 
+    \\ \hline
+    
+    \textbf{Magnetische Kraft} \newline
+    \tabbild[width=3.5cm]{images/HSR}   &	
+    \begin{equation*}\vec{F_m}(r) = \dfrac{\mu}{2\pi}\cdot\dfrac{I\cdot i}{r}\cdot\vec{r_0} = \mu\cdot i\cdot \vec{l_0}\times\vec{H}\end{equation*} 
+    \begin{equation*}F_m(r) = \dfrac{\mu\cdot I^2}{2\cdot\pi\cdot r}\end{equation*} 
+    \includegraphics[width=3cm]{images/HSR}	& \newline
+    $\mu =\mu_0\cdot\mu_r$\newline $\widehat{=}$ magnetische Permeabilität\newline 
+    $\mu_0$ = $4\pi\cdot 10^{-7} \,\left[\dfrac{N}{A^2}\right]=\left[\dfrac{Vs}{Am}\right]$ \newline \newline
+    $\vec{r_0}=\dfrac{\vec{r}}{|\vec{r}|}\,\widehat{=}$ Einheitsvektor \newline \newline 
+    I, i $\widehat{=}$ elektrische Ströme 	\newline \newline 
+    $[F_m]$ = $\dfrac{N}{m}$
+    \\ \hline
+\end{longtable}  
+\resetArrayStretch
+
+Sonst tabular \newline
+\begin{tabular}{l|r}
+    Hallo & \textbf{Hallo}\\ \hline
+    \textit{Hallo} & Hallo \\
+\end{tabular} \qquad
+\begin{tabular}{|p{7cm}|r}
+    Hallo mit fixer grösse 7cm\newline
+    mehrere zeilen möglich & \textbf{Hallo}\\ \hline
+    \textit{Hallo} & Hallo \\
+\end{tabular}
+
+\subsection{Layout-Tipps}
+\begin{minipage}{0.5\linewidth}
+    \textbf{minipage} verwenden für platzierungen.
+\end{minipage}
+\begin{minipage}{0.2\linewidth}
+    minipage verwenden für platzierungen.
+\end{minipage}
+\begin{minipage}{0.3\linewidth}
+    minipage verwenden für platzierungen.
+\end{minipage}
+\vspace{1cm}
+\begin{multicols}{2}
+    oder \textbf{multicols}\newline
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    \columnbreak
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+\end{multicols}
+
+\subsection{Spacing}
+$\backslash$qquad \newline
+$\backslash$hspace{width}\newline
+$\backslash$vspace{width}\newline
+$\backslash$newline\newline
+$\backslash$clearpage\newline
+\clearpage
+\subsection{Aufzählung}
+\textcolor{green}{Vorteil}:
+\begin{itemize} 
+    \item lineares Übertragungsverhalten
+    \item einfache Ansteuerung, Drehzahleinstellung
+    \item hohe Überlastfähigkeit
+    \begin{enumerate}
+        \item ctrl + shift + i für item
+        \item ctrl + shift + i für item
+    \end{enumerate}
+\end{itemize}
+\textcolor{red}{Nachteil}:
+\begin{itemize}
+    \item[><] verschleissbehaftet wegen dem mechanischen Kommutator
+    \item thermische Verluste entstehen im Rotor und sind schwer abzuführen
+    \item maximale Drehzahl durch mech. Kommutator begrenzt
+    \begin{itemize}
+        \item ctrl + shift + i für item
+        \item ctrl + shift + i für item
+    \end{itemize}
+\end{itemize}
