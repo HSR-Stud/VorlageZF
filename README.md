@@ -1,27 +1,20 @@
 # VorlageLaTex
-Vorlage für Zusammenfassungen in LaTex  
+Das folgende Repo dient als Vorlage für die Erstellung von eigenen Repos. 
+Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-Stud/Willkommen/blob/master/HSR-Stud%20Vorgaben.md), wird als Administratoren von HSR-Stud stellen, um die Ordnung zu schaffen und erhalten.  
+Falls du noch keine Ahnung von HSR-Stud, Latex oder GitHub im Allgemeinen hast, findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen.
 
-Falls du noch keine Ahnung von HSR-Stud, Latex oder GitHub im Allgemeine hast, dann findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen.
+## README
+Ein README sollte folgende Bestandteile zwingend aufweisen:
 
-##Allgemeine README-Vorlage:##
-##Titel##
+### Titel
 _Kurzbeschreibung (e.g. Zusammenfasssung der Vorlesung XY Semester Jahr HSR>_
-
-**Beschreibung** (optional)
-_Ausführlichere Beschreibung_
-
-**Inhalte** 
-_Vor allem wichtig wenn nur bestimmte Elemente enthalten sind_
-    - XXX
-    - XXX
-    - XXX
     
-**Contributors**
+### Contributors
 _Es ist fair, alle Leute zu erwähnen, die zu einer Zusammenfassung beigetragen haben._
 Format: Vorname Name (HSR-Kürzel) 
 _...eine Zeile pro Person._
 
-**License**
+### License
 _Dazu muss eine der der folgenden Lizenzen gewählt hier angegeben werden.
 - CC by (Namensnennung)
 - CC by-sa (Namensnennung, Weitergabe unter gleichen Bedingungen)
@@ -30,3 +23,13 @@ _Dazu muss eine der der folgenden Lizenzen gewählt hier angegeben werden.
 - CC0 (Public Domain, keine Einschränkungen) Weitere Details gibts auf http://creativecommons.org/licenses/. _
 
 Zudem muss das entsprechende MarkDown-File [hier](https://github.com/HSR-Stud/Creative-Commons-Markdown/tree/master/4.0)] kopiert werden und als **LICENSE.txt** in dein Repo kopiert werden.
+
+Folgende Kapitel können **optional** ebenfalls einem README hinzugefügt werden:
+### Beschreibung (optional)
+_Ausführlichere Beschreibung zum Fach (e.g. Modulprüfung, Hifsmittel, etc.)_
+
+### Inhalte (optional) 
+_Vor allem wichtig wenn nur bestimmte Elemente enthalten sind_
+    - XXX
+    - XXX
+    - XXX
