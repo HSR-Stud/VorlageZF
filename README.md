@@ -1,6 +1,6 @@
 # VorlageLaTex
 Das folgende Repo dient als Vorlage für die Erstellung von eigenen Repos. 
-Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-Stud/Willkommen/blob/master/HSR-Stud%20Vorgaben.md), wird als Administratoren von HSR-Stud stellen, um die Ordnung zu schaffen und erhalten.  
+Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-Stud/Willkommen/blob/master/HSR-Stud%20Vorgaben.md), um die Ordnung auf HSR-Stud zu erhalten und schaffen.  
 Falls du noch keine Ahnung von HSR-Stud, Latex oder GitHub im Allgemeinen hast, findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen.
 
 ## README
@@ -22,7 +22,7 @@ _Dazu muss eine der der folgenden Lizenzen gewählt hier angegeben werden.
 - CC by-nc-sa (Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen)
 - CC0 (Public Domain, keine Einschränkungen) Weitere Details gibts auf http://creativecommons.org/licenses/. _
 
-Zudem muss das entsprechende MarkDown-File [hier](https://github.com/HSR-Stud/Creative-Commons-Markdown/tree/master/4.0)] kopiert werden und als **LICENSE.txt** in dein Repo kopiert werden.
+Zudem muss das entsprechende MarkDown-File [hier](https://github.com/HSR-Stud/Creative-Commons-Markdown/tree/master/4.0) kopiert werden und als **LICENSE.txt** in dein Repo kopiert werden.
 
 Folgende Kapitel können **optional** ebenfalls einem README hinzugefügt werden:
 ### Beschreibung (optional)
