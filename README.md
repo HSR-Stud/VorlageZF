@@ -16,15 +16,17 @@ Format: Vorname Name (HSR-Kürzel) \
 _...eine Zeile pro Person._
 
 ### License
-_Dazu muss eine der der folgenden Lizenzen gewählt hier angegeben werden.
+_Dazu muss eine der der folgenden Lizenzen gewählt hier angegeben werden._
 - CC by (Namensnennung)
 - CC by-sa (Namensnennung, Weitergabe unter gleichen Bedingungen)
 - CC by-nc (Namensnennung, nicht kommerziell)
 - CC by-nc-sa (Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen)
 - CC0 (Public Domain, keine Einschränkungen) Weitere Details gibts auf http://creativecommons.org/licenses/. _
 
-Zudem muss das entsprechende MarkDown-File [hier](https://github.com/HSR-Stud/Creative-Commons-Markdown/tree/master/4.0) kopiert werden und als **LICENSE.txt** in dein Repo kopiert werden.
-\\
+_Zudem muss das entsprechende MarkDown-File [hier](https://github.com/HSR-Stud/Creative-Commons-Markdown/tree/master/4.0) kopiert werden und als **LICENSE.txt** in dein Repo kopiert werden._ 
+
+
+
 Folgende Kapitel können **optional** ebenfalls einem README hinzugefügt werden:
 
 ### Beschreibung (optional)
