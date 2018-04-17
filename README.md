@@ -23,9 +23,7 @@ _Dazu muss eine der der folgenden Lizenzen gewählt hier angegeben werden._
 - CC by-nc-sa (Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen)
 - CC0 (Public Domain, keine Einschränkungen) Weitere Details gibts auf http://creativecommons.org/licenses/. _
 
-_Zudem muss das entsprechende MarkDown-File [hier](https://github.com/HSR-Stud/Creative-Commons-Markdown/tree/master/4.0) kopiert werden und als **LICENSE.txt** in dein Repo kopiert werden._ 
-
-
+_Zudem muss das entsprechende MarkDown-File [hier](https://github.com/HSR-Stud/Creative-Commons-Markdown/tree/master/4.0) kopiert werden und als **LICENSE.txt** in dein Repo kopiert werden._ \
 
 Folgende Kapitel können **optional** ebenfalls einem README hinzugefügt werden:
 
