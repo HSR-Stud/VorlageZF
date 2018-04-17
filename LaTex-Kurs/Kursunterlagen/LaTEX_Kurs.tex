@@ -1,0 +1,34 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumentinformationen %
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\titleinfo}{\LaTeX-Einf\"uhrungskurs}
+\newcommand{\authorname}{\href{mailto:p1muelle@hsr.ch}{P. M\"uller}, M. Giger}
+\newcommand{\authoremail}{\href{mailto:p1muelle@hsr.ch}{p1muelle@hsr.ch} }
+\newcommand{\organizationinfo}{Hochschule f\"ur Technik Rapperswil}
+\newcommand{\versioninfo}{$ V1.0 $}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Standard Header für 
+% - Makros 
+% - Farben
+% - Mathematische Operatoren
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{header/header}
+\include{header/addkeys}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+\input{sections/voraus}
+\input{sections/texstudio}
+\newpage
+\input{sections/latex}
+\newpage
+\setcounter{section}{0}
+\renewcommand*{\thesection}{\Alph{section}}
+\input{sections/loesung}
+\newpage
+\input{sections/latexsheet}
+\end{document}

@@ -1,0 +1,23 @@
+
+
+\subsection{Ableitungen}
+
+\begin{tikzpicture}
+	[	inner sep = 2mm,
+		sin/.style={rectangle,minimum width=1.2cm,minimum height=1cm,rounded corners=5pt,draw=black,top color=green!20!black!50},
+		abl/.style={rectangle}
+	]
+	\node at (1.2,0) (sin1) [sin] {$\sin$};
+	\node at (0,-1.2) (cos2) [sin] {$-\cos$};
+	\node at (1.2,-2.4) (sin2) [sin] {$-\sin$};
+	\node at (2.4,-1.2) (cos1) [sin] {$\cos$};
+	
+	\draw[thick,black,->] (sin1.east) .. controls +(right:0.6cm) and +(up:0.6cm) ..  (cos1.north)
+	node [pos=0.5,above](abl) {$\frac{d}{dx}$};
+	\draw[thick,black,->] (cos1.south) .. controls +(down:0.6cm) and +(right:0.6cm) .. (sin2.east)
+	node [pos=0.5,below](abl) {$\frac{d}{dx}$};
+	\draw[thick,black,->] (sin2.west) .. controls +(left:0.6cm) and +(down:0.6cm) .. (cos2.south)
+	node [pos=0.5,below](abl) {$\frac{d}{dx}$};
+	\draw[thick,black,->] (cos2.north) .. controls +(up:0.6cm) and +(left:0.6cm) .. (sin1.west)
+	node [pos=0.5,above](abl) {$\frac{d}{dx}$};
+\end{tikzpicture}

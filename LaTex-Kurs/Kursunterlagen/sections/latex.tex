@@ -1,0 +1,183 @@
+\section{\LaTeX}
+Die Alternative zum Schreiben wissenschaftlicher Dokumente heißt \LaTeX . Es ist eine Erweiterung zum Textsatzsystem \TeX, welches in den 70er Jahren von Donald E. Knuth entwickelt wurde und seitdem gereift ist.\vspace{6pt}
+
+\textbf{Funktionsweise von \LaTeX}\\
+Beim Arbeiten mit \LaTeX{} werden Text und Formatierungsbefehle klar lesbar in einem reinen Text-File gespeichert. Man kann somit mit einem kleinen, aber schnellen Texteditor arbeiten und braucht kein riesiges Programm wie Word zu bemühen. Um das Dokument betrachten zu können, wird aus dem Textfile mit Hilfe des Kompilers ein druckfertiges Dokument erzeugt, z. B. PDF, DVI, auch HTML-Code ist möglich. \LaTeX{} ist case sensitive.\vspace{6pt}
+
+\textbf{Vorteile von \LaTeX}
+\begin{itemize}
+	\item Es ist kostenlos.
+	\item Es zwingt den Autor zum strukturierten Schreiben. Das Layout wird von \LaTeX\, professionell in Buchdruckqualität gesetzt.
+	\item Es läuft auf nahezu allen Plattformen. Ein Dokument sieht auf jeder Plattform und jedem Rechner gleich aus, egal welcher Drucker angeschlossen ist.
+	\item Es läuft zuverlässig und absturzfrei.
+	\item Komplizierte Strukturen wie: Fußnoten, Querverweise, Literatur-, Tabellen-, Abbildungsverzeichnisse, Indexe, etc. sind sehr einfach zu erzeugen.
+\end{itemize}
+
+\subsection{Commands und Enviroments}
+\textit{Commands} sind spezielle Angaben in der Eingabedatei, die Signale an \LaTeX \, übermitteln. Diese Signale können unterschiedliches bewirken. Sie können beispielsweise:
+\begin{itemize}
+	\item Änderungen am Format des Dokuments auslösen
+	\item Inhaltliche Ausgaben erzeugen
+	\item Informationen für später speichern
+	\item LaTeX-Funktionen erweitern
+\end{itemize}
+\LaTeX -Commands zeichnen sich im Regelfall durch einen vorangestellten $\backslash$(Backslash) aus (z.B. \befehl{documentclass}). Darauf folgen unter Umständen mehrere optionale oder verpflichtende \textit{Parameter}. Verpflichtende Parameter sind dabei in geschwungenen, optionale in eckigen und Zahlenangaben manchmal in runden Klammern eingeschlossen. Die Anzahl und Anordnung der Parameter ist beliebig und kann für jeden Befehl anders sein. Ein typischer Command sieht etwa wie folgt aus:
+\latexinput{sources/befehl.tex}
+Mit \umgebung{\%} können Kommentare erzeugt werden. \vspace{6pt}\\
+%\begin{mdframed}[style=mdCode]
+%	\input{sources/befehl}
+%\end{mdframed}%\vspace{-36pt}
+Es gibt aber auch sogenannte \textit{Umgebungen}. Umgebungen werden mit \befehl{begin} eingeleitet und enden mit \befehl{end}. Umgebungen bewirken ein spezielles Verhalten innerhalb ihrer Grenzen.
+\latexinput{sources/umgebung.tex}
+Viele Umgebungen können ineinander verschachtelt werden. Das merkt man schon daran, dass alle Inhalte in die Umgebung document eingepasst werden. Wir sehen das beispielsweise auch später bei den Aufzählungen. Allerdings müssen hier gewisse Regeln eingehalten werden: wird eine Umgebung mit \befehl{begin} gestartet und werden daraufhin weitere Umgebungen mit \befehl{begin} gestartet, so kann die ursprüngliche, äußere Umgebung erst mit \befehl{end} geschlossen werden, wenn auch die inneren Umgebungen bereits geschlossen wurden.
+
+\subsection{\LaTeX -Dokument einbinden}
+Auf Grund der Übersichtlichkeit rät es sich, ein \LaTeX -Dokument in mehrere Teildokumente zu unterteilen. Es gibt zwei Befehle um .tex-Dokumente in ein anderes Dokument einzufügen. Nämlich \befehl{include} und \befehl{input}.
+\latexinput{sources/include_input.tex}
+\befehl{include} und \befehl{input} haben sehr unterschiedliche Aufgaben.\vspace{6pt}
+
+\befehl{input} lädt die Datei an Ort und Stelle in die Ziel-Datei und ist als ob man den Text im File direkt in die Ziel-Datei geschrieben hätte. Es kann letztlich überall und für jede Art Datei verwendet werden. Es kann auch verschachtelt angewendet werden, d.h. eine eingebundene Datei kann ihrerseits Dateien mit \befehl{input} einbinden.\vspace{6pt}
+
+\befehl{include} hingegen beginnt eine neue Seite, bevor es \befehl{input} ausführt. Includes sind nicht verschachtelbar. Eine so eingebundene Datei kann aber natürlich \befehl{input} enthalten. \befehl{include} erzeugt eine neue aux-Datei für die eingebundene Datei. Das erlaubt es beispielsweise, ein Dokument in mehrere logische Einheiten zu zerlegen (etwa einzelne Kapitel), die jede einer Datei entsprechen, die mit \befehl{include} in die Hauptdatei eingebunden wird.\\
+\begin{aufgabe}[Dokument einbinden]
+	Binde das Dokument \textit{\glqq Tutorial.tex\grqq{}} in das Hauptdokument ein. (Dokumentpfad ist relativ anzugeben)
+\end{aufgabe}
+
+\subsection{Überschriften und Abschnitte}
+In \LaTeX{} ist das Erzeugen einer Überschrift mit dem Einleiten eines neuen Abschnitts im Ausgabedokument verknüpft. Abschnitte lassen sich hierarchisch unterteilen. Standardmäßig stehen die folgenden Ebenen (hierarchisch absteigend) zur Verfügung:
+\settocdepth{part}
+\setcounter{section}{0}
+\latexinputB{sources/sections}
+\settocdepth{subsection}
+\setcounter{section}{3}
+\setcounter{subsection}{3}
+In anderen Dokumentklassen gibt es z.B. noch \befehl{chapter} und \befehl{part} als übergeordnete Ebenen. \LaTeX{} erzeugt automatisch eine richtig verschachtelte Nummerierung. Ausschlaggebend dafür ist ausschließlich die Reihenfolge und Tiefe, in der die Befehle angegeben werden.\\
+\begin{aufgabe}[Kapitel einfügen]
+	Füge im Dokument \textit{\glqq Tutorial.tex\grqq{}} eine neue \textit{Section} hinzu. 
+\end{aufgabe}
+
+\subsection{Aufzählungen}
+Für Aufzählungen stehen unter \LaTeX{} die Umgebungen \umgebung{itemize} und \umgebung{enumerate} zur Verfügung. Selbstverständlich können Aufzählungen auch ineinandergeschachtelt werden.
+Durch den Befehl \befehl{item} wird ein neues Aufzählungsobjekt erzeugt. Die Aufzählungspunkte sind je nach Tiefe der Aufzählung durch verschiedene Symbole (Punkt, Bindestrich, Sternchen, kleiner Punkt) gekennzeichnet. Mehr als vier Ebenen sind nicht vorgesehen.
+\latexinputB{sources/item}
+Es sind auch nummerierte Aufzählungen mit \umgebung{enumerate} möglich. 
+\latexinputB{sources/enum}$ $
+\begin{aufgabe}[Aufzählungen erstellen]
+	Erstelle folgende Aufzählung:
+	\begin{itemize}	
+		\item Argument 1
+		\item Argument 2
+		\begin{enumerate}
+			\item Subargument 1
+			\item Subargument 2
+		\end{enumerate}
+		\item Argument 3
+	\end{itemize}
+\end{aufgabe}
+
+\subsection{Mathematikumgebung}
+Mathematische Ausdrücke lassen sich mit \LaTeX$ $ sehr gut formulieren und darstellen. \LaTeX$ $ beherrscht von sich aus diverse Mathematik-Operatoren. Die \textit{American Mathematical Society} (AMS) hat allerdings hervorragende Erweiterungspakete entwickelt.
+Es gibt unterschiedliche Möglichkeiten, um in \LaTeX $ $ eine Gleichung in ein Dokument einzufügen. Einerseits bieten sich die \umgebung{equation}-Umgebung, \befehl{[}$\; $\befehl{]} oder für \textit{inline}-Ausdrücke \umgebung{\$ \$}.\vspace{6pt}
+
+Mit der \umgebung{equation}-Umgebung lassen sich Gleichungen in einem neuen Absatz einfügen. Alle Formelzeichen werden im \befehl{displaystyle}, d.h. sie werden mit grossen Symbolen dargestellt. Zusätzlich erhalten die Gleichungen noch eine Nummer, die an der rechten Seite angezeigt wird.
+\latexinputB{sources/equ}
+
+Mit \befehl{[}$\; $\befehl{]} lassen sich ebenfalls Gleichungen in einem neuen Absatz einfügen. Allerdings werden diese nicht nummeriert. Auch hier werden Zeichen im \befehl{displaystyle} dargestellt.
+\latexinputB{sources/formel}
+
+Mit \umgebung{\$ \$} können Gleichungen \textit{inline} geschrieben werden. Das bedeutet Formeln können zusammen mit Text auf derselben Linie dargestellt werden. 
+$ $\latexinputB{sources/informel}
+
+\begin{aufgabe}[Physikalisches Gaußsches Gesetz]
+	Versuche folgenden mathematischen Ausdruck zu schreiben:
+	\[ \text{div } \vec{D} = \vec{\nabla} \cdot \vec{D} = \rho \Leftrightarrow \oiint_{\partial V}\vec{D}\cdot d\vec{A} = \iiint_V \rho \cdot dV = Q(V) \]
+	Experimentiere auch mit der \textit{inline}-Mathematikumgebung, um die unterschiedlichen Darstellungen zu sehen. 
+\end{aufgabe}
+
+\subsection{Bilder einfügen}
+In einem Dokument möchte man häufig Grafiken und Bilder einfügen. Hierfür bietet \LaTeX{} den Befehl \befehl{includegraphics}. Das einzufügende Bild sollte sich irgendwo im selben Ordner, oder noch besser in einem Subordner des Hauptdokuments befinden.
+\latexinputB{sources/bild}
+
+\subsection{Tabellen}
+Für Tabellen bieten sich in \LaTeX{} unterschiedliche Umgebungen an. Wichtige Umgebungen sind: \umgebung{tabular}, \umgebung{tabularx}, \umgebung{tabulary} und \umgebung{longtable}. Mit \befehl{hline} können horizontale Linien gezogen werden.
+\begin{itemize}
+	\item \textbf{tabular:} Tabellenumgebung bei der die Tabellengrösse dem Inhalt angepasst wird. 
+	\item \textbf{tabularx:} Tabellen bei der die Breite der Tabelle vorgegeben werden kann. Zusätzlicher Spaltentyp X.
+	\item \textbf{tabulary:} Erweiterung von \texttt{tabularx}. Bietet 4 weitere Spaltentypen L,R,C,J.
+	\item \textbf{longtable:} Tabelle die über mehrere Seiten verteilt werden kann.
+\end{itemize}
+$ $\vspace{-12pt}\latexinputB{sources/tabular}
+In \texttt{\{|l|c|r|\}} werden die Spalten angegeben. Folgende Spaltentypen sind standardmässig definiert.\\ 
+\begin{tabular}{l l}
+	\texttt{|}: & Trennstrich zwischen Spalten\\
+ 	\texttt{l}: & Linksbündig \\
+	\texttt{c}: & Zentriert\\
+	\texttt{r:} & Rechtsbündig\\
+	\texttt{p\{breite\}}: & Minipage mit angegebener Breite, Ausrichtung oben\\
+	\texttt{m\{breite\}}: & Minipage mit angegebener Breite, Ausrichtung mittig\\
+	\texttt{b\{breite\}}: & Minipage mit angegebener Breite, Ausrichtung unten\\
+	\texttt{X}: & Spalte mit variabler Breite (\texttt{tabularx})\\
+\end{tabular}\clearpage
+\begin{aufgabe}[Tic Tac Toe]
+  Versuche mittels \umgebung{tabular} ein Tic Tac Toe-Spiel zu zeichnen.\\
+  Bsp:
+  \begin{tabular}{c|c|c}
+  	x & o & o\\ \hline
+  	x & o & x\\ \hline
+  	x & x & o\\
+  \end{tabular}
+  
+\end{aufgabe}
+
+\subsection{Minipages}
+Die \umgebung{minipage} wird oft genutzt um Dinge nebeneinander setzen zu können, die sich sonst nicht so einfach nebeneinander setzen lassen. Zum Beispiel zwei Bilder nebeneinander, zwei Tabellen oder ein Bild neben einen Text beziehungsweise umgekehrt. Die Idee hinter der \umgebung{minipage}-Umgebung ist, dass innerhalb einer bestehenden Seite eine weitere Seite eingebaut wird. Dadurch hat man nun die Möglichkeit diese neue Seite zu verwenden oder eine neue \textit{Minipage} danebenzusetzen (z.B. um zwei Bilder nebeneinander darzustellen).
+%Dadurch hat man die Möglichkeit diese neue Seite verwenden kann, und im Fall, dass man zum Beispiel zwei Bilder nebeneinander stellen will, dann einfach zwei \textit{Minipages} nebeneinander setzt.
+$ $\latexinputB{sources/minipage}
+
+\subsection{Multicols}
+Die \umgebung{mulitcols}-Umgebung erlaubt, Teile eines Dokuments mehrspaltig zu setzen. Dabei regelt die Umgebung automatisch den Umbruch zur nächsten Spalte.
+\latexinputB{sources/multicols}
+\subsection{Schriftgrössen und Formate}
+Die Schriftgröße einzelner Wörter, Abschnitte oder des ganzen Textes können geändert werden. Dafür bieten sich die folgenden Commands (in der Grösse aufsteigend) an :
+\latexinputB{sources/size}
+Zudem kann Text \textbf{fett}, \textit{kursiv}, \underline{unterstrichen} oder auch {\color{red}farbig markiert} werden.
+\latexinputB{sources/format}
+
+\subsection{PDFs und Code einbinden}
+Um PDFs in ein Dokument einzubinden wird zusätzlich zum Vorlage-Header noch das Package \umgebung{pdfpages} benötigt. Mit dem Befehl \befehl{includepdf} wird dann das PDF hinzugefügt. Der Beispielcode bindet alle Seiten von \textit{\glqq ELT3.pdf \grqq} ein.
+\latexinput{sources/pdf}
+Es lassen sich aber auch Codefiles unterschiedlicher Programmiersprachen (z.B. C, C++, Java, Python, etc.) einbinden. Dafür kann die \umgebung{lstlisting}-Umgebung oder \befehl{lstinputlisting} verwendet werden. Mit \befehl{lstdefinestyle} lassen sich unterschiedliche Codeformatierungen erstellen. Hier ein Beispiel für C++:  
+\latexinput{sources/lstset}
+\input{sources/lstset}
+Für genauere Informationen bezüglich dem \umgebung{listings}-Package empfiehlt sich die  {\color{blue}\href{http://users.ecs.soton.ac.uk/srg/softwaretools/document/start/listings.pdf}{Package-Dokumentation}}. \vspace{6pt}\\
+Hier noch ein Beispiel, wie der formatierte Code schlussendlich aussieht:
+\latexinputC{sources/cpp}
+\clearpage
+\subsection{Weitere Tutorials}
+Hier noch Links zu weiteren \LaTeX -Tutorials: \\
+{\color{blue}
+\href{https://www.youtube.com/watch?v=hRwUjJYeHjw}{Youtube-Tutorial} \\
+\href{https://latex.tugraz.at/latex/tutorial}{latex.TuGraz.at}\\
+\href{https://www.latex-tutorial.com/tutorials/}{latex-tutorial.com {\color{black}(Englisch)}}\\
+\href{http://latex.hpfsc.de/content/latex_tutorial/}{latex.hpfsc.de}\\
+\href{https://www.fernuni-hagen.de/imperia/md/content/zmi_2010/a026_latex_einf.pdf}{fernuni-hagen.de}}\\
+
+\begin{aufgabe}[Ausprobieren!]
+  \LaTeX{} lässt sich am besten lernen, indem man ausprobiert und andere Files analysiert. Clone dazu weitere Formelsammlungen von {\color{blue}\href{https://github.com/HSR-Stud/VorlageZFLaTex}{GitHub}}, schau dir an wie diese erstellt wurden und passe sie nach deinem Geschmack an. Falls Fragen auftauchen, dann versuch dein Problem zu googeln.\vspace{6pt}\\
+  \textbf{\large Viel Spass beim Lernen! %\tikzsymbolsuse{Smiley}[1]
+}
+\end{aufgabe}
+	
+%Beispiele für Befehle
+%		Hinweis auf Youtube Tutorials
+%		Sections
+%		Minipages / Multicols
+%		Mathe umgebung Display vs inline
+%		Enumerate Itemize
+%		Bilder Einfügen
+%		Tabellen
+%		Spacings
+%		Schriftgrössen / Arten
+%	Input von anderen Dokumenten TEX vs PDF
+
+

@@ -1,0 +1,302 @@
+%BuG-Fix
+%Package pdf Error: Driver file ................ not found
+%If you have a luatex driver fail uncomment these lines
+%\RequirePackage{luatex85}
+%\def\pgfsysdriver{pgfsys-pdftex.def}
+
+% Genereller Header
+\documentclass[11pt,twoside,a4paper,fleqn]{article}
+% Dateiencoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}	%ä,ü...
+% Seitenränder
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=0.5cm,includeheadfoot]{geometry}
+\setlength{\headsep}{12pt} 
+% Sprachpaket 
+\usepackage[english, ngerman]{babel} % Silbentrennung und Rechtschreibung Englisch und Deutsch
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Wichtige Packages %%
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}                % Allgemeine Matheumgebungen									
+%\usepackage{amssymb}                % Fonts: msam,msbm, eufm & Mathesymbole, Mengen (lädt automatisch amsfonts)									
+\usepackage{array}                  % \newcolumntype, \firsthline, ,\lasthline, m{width}, b{width}									
+\usepackage{caption}                % Bildunterschriften									
+\usepackage{enumitem}               % basic environments: enumerate, itemize, description									
+\usepackage{fancybox}               % \fbox: \shad­ow­box, \dou­ble­box, \oval­box, \Oval­box									
+\usepackage{fancyhdr}               % Seiten schöner gestalten, insbesondere Kopf- und Fußzeile									
+\usepackage{floatflt}               % Textumflossene Abbildungen \begin{floatingfigure}[r]{Breite} : r rechts, l links, p links auf geraden Seiten und rechts auf ungeraden Seiten								
+\usepackage{graphicx}               % \includegraphics[keyvals]{imagefile}, [draft]graphicx zeigt nur Namen und Rahmen an, [final] hebt diese option auf => Bild wird angezeigt    									
+\usepackage{hyperref}               % Erstellt Verweise innerhalb und nach außerhalb eines PDF Dokumentes.									
+\usepackage{lastpage}               % Bspw. : Page 1 of 3 => \thepage\ of \pageref{LastPage}									
+\usepackage{listings}               % Erlaubt es Programmcode in der gewünschten Sprache zu hinterlegen (C++, Matlab,..). Definition der Sprache mit \lstset{language=name}..									
+\usepackage{longtable}              % Longtable erlaubt es Tabellen zu erstellen die bei der nächsten Seite weiterlaufen. (Bricht automatisch um)									
+%\usepackage{mathabx}                % Mathesymbole									
+%\usepackage{mathrsfs}               % \mathscr (Benötigt für Fourierreihen-Symbol)									
+%\usepackage{mathtools}              % Extension package to amsmath									
+\usepackage{multicol}               % multicols-Umgebung \begin{multicols}{3} erzeugt Abschnitt mit 3 Spalten									
+\usepackage{multirow}               % Tabelle: ermöglicht es Felder mehrerer Zeilen in einem zusammenzufassen									
+\usepackage{pdflscape}              % adds PDF support to the environment 'landscape'									
+\usepackage{pxfonts}                % Symbole, griechisches Alphabet, Integrale...									
+\usepackage{rotating}               % sideways, turn{degree}, rotate{degree}, sidewaysfigure, sidewaystable Umgebung									
+\usepackage{subcaption}             % Bildunterschriften für Subfigures									
+\usepackage{tabularx}               % tabularx-Umgebung: Hat feste Gesamtbreite, \begin{tabularx}{\textwidth}{c c c c c} X: Spalte mit variabler Breite, l, c, r, p{breite}, m{breite}									
+%\usepackage{textcomp}               % text symbols: baht, bullet, copyright, musical-note, onequarter, section, yen									
+%\usepackage{tikz}                   % Tikz Umgebung zur Grafikerzeugung									
+\usepackage{titlesec}               % Überschriften zu Textabstände
+\usepackage{trfsigns}               % Transformationszeichen \laplace, \Laplace..									
+\usepackage{trsym}                  % Weitere Laplace Zeichen erlaubt auch vertikale Transformationszeichen									
+\usepackage{verbatim}               % verbatim, verbatim*, comment Umgebung									
+\usepackage{wrapfig}                % Textumflossene Bilder und Tabellen, \begin{wrapfigure}[Zeilen]{Position}[Ueberhang]{Breite}									
+\usepackage{xcolor}                 % \pagecolor{color}, \textcolor{color}{text}, \colorbox{color}{text}, \fcolorbox{border-color}{fill-color}{text}									
+\usepackage{titlesec}
+% Zum Bilder einfach in Tabellen einfügen (valign=t)
+\usepackage[export]{adjustbox}
+
+%%%%%%%%%%%%%%%%%%%%
+% Generelle Makros %
+%%%%%%%%%%%%%%%%%%%%
+\newcommand{\skript}[1]{$_{\textcolor{red}{\mbox{\small{Skript S.#1}}}}$}
+\newcommand{\verweis}[2]{\small{(siehe auch \ref{#1}, #2 (S. \pageref{#1}))}}
+\newcommand{\verweiskurz}[1]{(\small{siehe \ref{#1}\normalsize)}}
+\newcommand{\subsubadd}[1]{\textcolor{black}{\mbox{#1}}}
+\newcommand{\formelbuch}[1]{$_{\textcolor{red}{\mbox{\small{S#1}}}}$}
+
+\newcommand{\kuchling}[1]{$_{\textcolor{red}{\mbox{\small{Kuchling #1}}}}$}
+\newcommand{\stoecker}[1]{$_{\textcolor{grey}{\mbox{\small{Stöcker #1}}}}$}
+\newcommand{\sachs}[1]{$_{\textcolor{blue}{\mbox{\small{Sachs S. #1}}}}$}
+\newcommand{\hartl}[1]{$_{\textcolor{green}{\mbox{\small{Hartl S. #1}}}}$}
+
+\newcommand{\schaum}[1]{\tiny Schaum S. #1}
+
+\newcommand{\skriptsection}[2]{\section{#1 {\tiny Skript S. #2}}}
+\newcommand{\skriptsubsection}[2]{\subsection{#1 {\tiny Skript S. #2}}}
+\newcommand{\skriptsubsubsection}[2]{\subsubsection{#1 {\tiny Skript S. #2}}}
+
+\newcommand{\matlab}[1]{\footnotesize{(Matlab: \texttt{#1})}\normalsize{}}
+
+\newcommand\tabbild[2][]{%
+	\raisebox{0pt}[\dimexpr\totalheight+\dp\strutbox\relax][\dp\strutbox]{%
+		\includegraphics[#1]{#2}%
+	}%
+}
+
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}} %Tabelle linksausgerichtet
+\newcolumntype{L}[1]{>{\raggedleft\arraybackslash}p{#1}} %Tabelle rechtsausgerichtet
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+
+
+%%%%%%%%%%
+% Farben %
+%%%%%%%%%%
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{white}{rgb}{1,1,1}
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{green}{rgb}{0,.8,0.05}
+\definecolor{brown}{rgb}{0.603,0,0}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mathematische Operatoren %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+%\DeclareMathOperator{\e}{e}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\PolyGrad}{PolyGrad}
+
+%Grösse Integral anpassen
+\def\Int{\mbox{\Large$\displaystyle\int$\normalsize}}
+\def\OInt{\mbox{\Large$\displaystyle\oint$\normalsize}}
+
+%Makro für 'd' von Integral- und Differentialgleichungen 
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fouriertransformationen %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Fouriertransformationen
+\unitlength1cm
+\newcommand{\FT}
+{
+	\begin{picture}(1,0.5)
+	\put(0.2,0.1){\circle{0.14}}\put(0.27,0.1){\line(1,0){0.5}}\put(0.77,0.1){\circle*{0.14}}
+	\end{picture}
+}
+
+
+\newcommand{\IFT}
+{
+	\begin{picture}(1,0.5)
+	\put(0.2,0.1){\circle*{0.14}}\put(0.27,0.1){\line(1,0){0.45}}\put(0.77,0.1){\circle{0.14}}
+	\end{picture}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Allgemeine Einstellungen %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt} %kompakte itemize
+\setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt} %kompakte enumerate
+
+%Pdf Info
+\hypersetup{pdfauthor={\authorname},pdftitle={\titleinfo},colorlinks=false}
+\author{\authorname}
+\title{\titleinfo}
+
+% Abstände Text zu Übertiteln / Einzug
+%\titlespacing{\section}{12pt}{1em}{0.5em}
+%\titlespacing{\subsection}{12pt}{1em}{0.5em}
+%\titlespacing{\subsubsection}{12pt}{1em}{0.5em}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Kopf- und Fusszeile %
+%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\fancyhf{}
+%Linien oben und unten
+\renewcommand{\headrulewidth}{0.5pt} 
+\renewcommand{\footrulewidth}{0.5pt}
+
+%Kopfzeile links bzw innen
+\fancyhead[L]{\titleinfo}
+%Kopfzeile mitte
+\fancyhead[C]{}
+%Kopfzeile rechts bzw. aussen
+\fancyhead[R]{\rightmark}
+
+%Fusszeile links bzw. innen
+\fancyfoot[L]{\footnotesize{\organizationinfo}}
+%Fusszeile mitte
+\fancyfoot[C]{\footnotesize{Seite \thepage { }von \pageref{LastPage}}}
+%Fusszeile rechts bzw. ausen
+\fancyfoot[R]{\footnotesize{\authorname}}
+% Einrücken verhindern versuchen
+\setlength{\parindent}{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Makros & anderer Low-Level bastel %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Zeilenhöhe Tabellen:
+\newcommand{\arraystretchOriginal}{1.5}
+\renewcommand{\arraystretch}{\arraystretchOriginal}
+
+\makeatletter
+%% Makros für den Arraystretch (bei uns meist in Tabellen genutzt, welche Formeln enthalten)
+% Default Value
+\def\@ArrayStretchDefault{1} % Entspricht der Voreinstellung von Latex
+
+% Setzt einen neuen Wert für den arraystretch
+\newcommand{\setArrayStretch}[1]{\renewcommand{\arraystretch}{#1}}
+
+% Setzt den arraystretch zurück auf den default wert
+\newcommand{\resetArrayStretch}{\renewcommand{\arraystretch}{\@ArrayStretchDefault}}
+
+% Makro zum setzten des Default arraystretch. Kann nur in der Präambel verwendet werden.
+\newcommand{\setDefaultArrayStretch}[1]{%
+    \AtBeginDocument{%
+        \def\@ArrayStretchDefault{#1}
+        \renewcommand{\arraystretch}{#1}
+    }
+}
+\makeatother
+
+%% Achtung Symbol \danger
+\newcommand*{\TakeFourierOrnament}[1]{{%
+        \fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Paedi's Header Extension
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lstset
+{		
+		language=[LaTeX]TeX,
+    breaklines=true,
+    showspaces = false,
+%    showstringspacs = false,
+    basicstyle =  \tt,
+    keywordstyle=\color{blue},
+   	stringstyle=\color{brown},
+    identifierstyle=\color{black},
+}
+
+\newcommand{\befehl}[1]{\texttt{\color{blue}$\backslash$#1}}
+\newcommand{\umgebung}[1]{\texttt{\color{blue}#1}}
+
+\definecolor{lstgrey}{rgb}{0.65,0.65,0.65}
+\definecolor{aufcol}{rgb}{0, 0.6, 0}
+
+\usepackage{pdfpages}
+\usepackage{mdframed}
+\mdfdefinestyle{mdCode}{
+linecolor=lstgrey,
+linewidth=1.5pt,
+skipabove=6pt,
+skipbelow=6pt,
+innertopmargin=0.5\topskip,
+innerbottommargin=0.5\topskip,
+innerleftmargin=\topskip,
+innerrightmargin=\topskip,
+%innerlinewidth=0pt,
+backgroundcolor=lstgrey!20,
+%roundcorner=10pt
+}
+\mdfdefinestyle{mdAufgabe}{
+linecolor=aufcol,
+linewidth=1.5pt,
+skipabove=6pt,
+skipbelow=6pt,
+innertopmargin=0.5\topskip,
+innerbottommargin=0.5\topskip,
+innerleftmargin=\topskip,
+innerrightmargin=\topskip,
+%innerlinewidth=0pt,
+backgroundcolor=aufcol!20,
+%roundcorner=10pt
+}
+
+\newcommand{\latexinput}[1]
+{\begin{mdframed}[style=mdCode]\lstinputlisting{#1}\end{mdframed}}
+\newcommand{\latexinputB}[1]
+{\begin{mdframed}[style=mdCode]\begin{minipage}[h]{0.6\textwidth}
+\lstinputlisting{#1}
+\end{minipage}\vline \begin{minipage}[h]{0.05\textwidth}\end{minipage}
+\begin{minipage}[h]{0.35\textwidth}
+\input{#1}
+\end{minipage}\end{mdframed}}
+\newcommand{\latexinputC}[1]
+{\begin{mdframed}[style=mdCode]\begin{minipage}[h]{0.6\textwidth}
+\lstinputlisting{#1}
+\end{minipage}\vline\hspace{0.5cm} %\begin{minipage}[h]{0.05\textwidth}\end{minipage}
+\begin{minipage}[h]{0.35\textwidth}
+\input{#1}
+\end{minipage}\end{mdframed}}
+\newcounter{aufgaben}
+\setcounter{aufgaben}{1}
+%\newcommand{\aufgabe}[2]{$ $\newline\textbf{$\blacktriangleright{}$ Aufgabe \theaufgaben: #1}\newline #2\stepcounter{aufgaben}}
+\newenvironment{aufgabe}[1][\unskip]{%
+\textbf{$\blacktriangleright{}$ Aufgabe \theaufgaben: #1}\newline}{\stepcounter{aufgaben}}
+\surroundwithmdframed[style=mdAufgabe]{aufgabe}
+%\include{header/codelayout}
+
+\usepackage{lipsum}
+\usepackage{tocvsec2}
+\usepackage{calc}
+\usepackage{ifthen}
+%\usepackage[landscape]{geometry}
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+\newcommand{\texstud}{\TeX studio }
+\usepackage{tikzsymbols}

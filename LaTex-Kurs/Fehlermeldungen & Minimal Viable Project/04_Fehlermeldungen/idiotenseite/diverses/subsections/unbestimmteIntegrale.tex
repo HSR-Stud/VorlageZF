@@ -1,0 +1,93 @@
+\begin{sidewaystable}
+\subsection{Einige unbestimmte Integrale\formelbuch{1074}}
+\label{unbestimmte_integrale}
+\begin{tabular}{|p{12cm}|p{13cm}|}
+  \hline
+  
+    $ \int dx=x+C $ &
+     $ \int{x^\alpha}dx=\frac{x^{\alpha+1}}{\alpha+1}+C,\ x \epsilon \mathbb
+    R ^+,\ \alpha \epsilon \mathbb R \backslash \{ -1 \} $ \\\hline
+     $ \int{\frac{1}{x}}dx=\ln \left| x \right| + C,\ x\neq0 $ &
+     $ \int{e^x}dx=e^x+C $ \\\hline
+     $ \int{a^x}dx=\frac{a^x}{\ln{a}}+C,\ a \epsilon \mathbb 
+    R^+\backslash\{1\} $ &
+     $ \int{ \sin{x}} dx = -\cos{x} + C $ \\\hline
+     $ \int{\cos{x}} dx = \sin{x} + C $ &
+     $ \int{\frac{dx}{\sin^2x}}=-\cot{x}+C,\ x\neq k\pi\ \mathrm{mit}\ k
+    \epsilon \mathbb Z $ \\\hline
+     $ \int{\frac{dx}{\cos^2x}}=\tan{x}+C,\ x\neq\frac{\pi}{2}+k\pi\
+    \mathrm{mit} k \epsilon \mathbb Z $ & 
+    
+    %10. :
+     $ \int{\sinh{x}}dx = \cosh{x}+C $ \\ \hline
+     $ \int{\cosh{x}}dx = \sinh{x}+C $ &
+     $ \int{\frac{dx}{\sinh^2x}}=-\coth{x}+C,\ x\neq0 $ \\\hline
+     $ \int{\frac{dx}{\cosh^2x}}=\tanh{x}+C $ &
+     $ \int{\frac{dx}{ax+b}} = \frac{1}{a}\ln \left|ax + b\right| + C,\
+    a\neq 0,x\neq-\frac{b}{a} $ \\\hline
+     $ \int{\frac{dx}{a^2x^2+b^2}}=\frac{1}{ab}\arctan{\frac{a}{b}x}+C,\
+    a\neq0,\ b\neq0 $ &
+     $
+    \int{\frac{dx}{a^2x^2-b^2}}=\frac{1}{2ab}\ln{\left|\frac{ax-b}{ax+b}\right|}+C,\
+    a\neq0,\ b\neq0,\ x\neq\frac{b}{a},\ x\neq-\frac{b}{a} $ \\\hline
+     $
+    \int{\sqrt{a^2x^2+b^2}}dx=\frac{x}{2}\sqrt{a^2x^2+b^2}+\frac{b^2}{2a}\ln{(ax+\sqrt{a^2x^2+b^2})}+C,\
+    a\neq0,\ b\neq0 $ &
+     $
+    \int{\sqrt{a^2x^2-b^2}}dx=\frac{x}{2}\sqrt{a^2x^2-b^2}-\frac{b^2}{2a}\ln\left|ax+\sqrt{a^2x^2-b^2}\right|+C,\
+    a\neq0,\ b\neq0,a^2x^2\geqq b^2$ \\\hline
+     $
+    \int\sqrt{b^2-a^2x^2}dx=\frac{x}{2}\sqrt{b^2-a^2x^2}+\frac{b^2}{2a}\arcsin\frac{a}{b}x+C,\
+    a\neq0,\ b\neq0,\ a^2x^2\leqq b^2 $ &
+    %20.:
+     $
+    \int\frac{dx}{\sqrt{a^2x^2-b^2}}=\frac{1}{a}\ln(ax+\sqrt{a^2x^2+b^2})+C,\
+    a\neq0,\ b\neq0 $ \\\hline
+     $
+    \int\frac{dx}{\sqrt{a^2x^2-b^2}}=\frac{1}{a}\ln\left|ax+\sqrt{a^2x^2-b^2}\right|+C,\
+    a\neq0,\ b\neq0,\ a^2x^2>b^2 $ &
+     $ \int\frac{dx}{\sqrt{b^2-a^2x^2}}=\frac{1}{a}\arcsin\frac{a}{b}x+C,\
+    a\neq0,\ b\neq0,\ a^2x^2<b^2 $ \\\hline
+     Die Integrale $\int\frac{dx}{X}, \int\sqrt{X}dx,
+    \int\frac{dx}{\sqrt{X}}$ mit $X=ax^2+2bx+c,\ a\neq0 $ werden durch 
+    die Umformung $X=a(x+\frac{b}{a})^2+(c-\frac{b^2}{a}) $ und die
+    Substitution $ t=x+\frac{b}{a} $ in die oberen 4 Zeilen
+    transformiert. & $ \int\frac{xdx}{X}=\frac{1}{2a}\ln\left|X\right|-\frac{b}{a}\int\frac{dx}{X},\
+    a\neq0,\ X=ax^2+2bx+c $ \\\hline
+     $ \int\sin^2axdx=\frac{x}{2}-\frac{1}{4a}\cdot\sin2ax+C,\ a\neq0 $ &
+     $ \int\cos^2axdx=\frac{x}{2}+\frac{1}{4a}\cdot\sin2ax+C,\ a\neq0 $ \\\hline
+     $ \int\sin^naxdx=-\frac{sin^{n-1}ax\cdot\cos
+    ax}{na}+\frac{n-1}{n}\int\sin^{n-2}axdx,\ n \epsilon \mathbb N,\ a\neq0 $ &
+     $ \int\cos^naxdx=\frac{\cos^{n-1}ax\cdot\sin
+    ax}{na}+\frac{n-1}{n}\int\cos^{n-2}axdx,\ n\epsilon \mathbb N,\ a\neq0 $
+    \\\hline
+     $ \int\frac{dx}{\sin ax} =
+    \frac{1}{a}\ln\left|\tan\frac{ax}{2}\right|+C,\ a\neq0,\ x\neq
+    k\frac{\pi}{a}\ \mathrm{mit}\ k\epsilon\mathbb Z$ &
+    %30.:
+     $ \int\frac{dx}{\cos
+    ax}=\frac{1}{a}\ln\left|\tan(\frac{ax}{2}+\frac{\pi}{4})\right|+C,\ a\neq0,\
+    x\neq\frac{\pi}{2a}+k\frac{\pi}{a}\ \mathrm{mit}\ k\epsilon\mathbb Z $
+    \\\hline
+     $\int\tan axdx=-\frac{1}{a}\ln\left|\cos ax\right|+C,\ a\neq0,\
+    x\neq\frac{\pi}{2a}+k\frac{\pi}{a} \mathrm{mit}\ k\epsilon\mathbb Z$ &
+     $\int\cot axdx=\frac{1}{a}\ln\left|\sin ax\right|+C,\ a\neq0,\ x\neq
+    k\frac{\pi}{a} \mathrm{mit} k\epsilon\mathbb Z $ \\ \hline
+     $ \int x^n\sin axdx=-\frac{x^n}{a}\cos ax+\frac{n}{a}\int x^{n-1}\cos
+    axdx,\ n\epsilon\mathbb N,\ a\neq0 $ &
+    $ \int x^n\cos axdx=\frac{x^n}{a}\sin ax-\frac{n}{a}\int x^{n-1}\sin
+    axdx,\ n\epsilon\mathbb N,\ a\neq0 $ \\ \hline
+     $ \int x^ne^{ax}dx=\frac{1}{a}x^ne^{ax}-\frac{n}{a}\int
+    x^{n-1}e^{ax}dx,\ n\epsilon\mathbb N,\ a\neq0 $ &
+     $ \int e^{ax}\sin bxdx=\frac{e^{ax}}{a^2+b^2}(a\sin bx-b\cos bx)+C,\
+    a\neq0,\ b\neq0 $  \\ \hline
+     $ \int e^{ax}\cos bxdx=\frac{e^{ax}}{a^2+b^2}(a\cos bx + b\sin bx)+C,\
+    a\neq0,\ b\neq0 $ &
+     $ \int\ln x dx = x(\ln x-1)+C,\ x\epsilon\mathbb R^+ $ \\ \hline
+     $ \int x^\alpha \cdot \ln xdx =
+    \frac{x^{\alpha+1}}{(\alpha+1)^2}\lbrack(\alpha+1)\ln x-1\rbrack + C,\
+    x\epsilon\mathbb R^+,\ \alpha\epsilon\mathbb R\backslash\{-1\} $ & \\ \hline
+    %FF1 Seite 496
+    
+\end{tabular}
+\end{sidewaystable}

@@ -1,0 +1,110 @@
+
+\begin{sidewaystable}
+%\begin{center}
+\subsection{Allgemein zeitabhängige Grössen}
+	\begin{tabular}{|ll|ll|}
+    \hline
+	\multicolumn{2}{|l}{Arithmetischer Mittelwert, Gleichwert, Linearer MW} 
+	    	& \multicolumn{2}{l|}{$X_0 = \overline{X} = X_m = \frac {1} {T} \int\limits_{t_0}^{t_0+T}
+	    	x(t)dt$} \\
+	\hline
+	Quadratischer MW, Leistung 
+		& $X^2 = \frac {1} {T} \int\limits_{t_0}^{t_0+T} x^2(t)dt$ 
+		& MW $n$. Ordnung
+		& $X^n = \frac {1} {T} \int\limits_{t_0}^{t_0+T} x^n(t)dt$ \\
+	\hline
+	Effektivwert (RMS) 
+		& $X = \sqrt{X^2} = \sqrt{\frac{1}{T} \int\limits ^{t_0+T}_{t_0}{x^2(t)dt}}$
+		& Gleichrichtwert 
+		& $X_{|m|} = \bar{|X|} = \frac{1}{T} \int\limits_{t_0}^{t_0+T}{|x(t)| dt}$ \\
+	\hline
+\end{tabular}
+\vspace{0.5cm}
+\subsection{Eigenschaften unterschiedlicher Schwingungsformen}
+
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+	Schwingungsform & Funktion & Gleichrichtwert & Formfaktor &
+	Effektivwert & Crestfaktor & \textbf{$X_0$} & \textbf{$X^2$} & \textbf{var(X)} \\
+\hline
+	Formel &
+	&
+	$\overline{\left|x\right|} = \frac1T\int_{0}^{T}\left| x(t)\right|dt$&
+	$\frac{X}{\overline{\left|x\right|}}$&
+	$X = \sqrt{X^2} = \sqrt{\frac{1}{T} \int\limits ^{t_0+T}_{t_0}{x^2(t)dt}}$&
+	$k_{s}=\frac{X_{\mathrm{max}}}{X_{\mathrm{eff}}}$&
+	&
+	&
+	\\
+\hline
+	\includegraphics[width=2cm]{idiotenseite/images/table_sine_wave.png} &
+	$A\cdot\sin(t)$ &
+	$\frac{2}{\pi} \approx 0.637$ &
+	$\frac{\pi}{2\sqrt{2}} \approx 1.11$ &
+	$\frac{1}{\sqrt{2}}\approx 0.707$ &
+	$\sqrt{2}\approx 1.414$ &
+	$0$ &
+	$\frac{A^2}{2}$ &
+	$\frac{A^2}{2}$ \\
+\hline	
+	\includegraphics[width=2cm]{idiotenseite/images/table_full-wave_rectified_sine.png} &
+	$A\cdot|\sin(t)|$ &
+	$\frac{2}{\pi} \approx 0.637$ &
+	$\frac{\pi}{2\sqrt{2}} \approx 1.11$ &
+	$\frac{1}{\sqrt{2}} \approx 0.707$ &
+	$\sqrt{2} \approx 1.414$  &
+	$\frac{2A}{\pi}$ & $\frac{A^2}{2}$ & $\frac{A^2}{2}-\frac{4A^2}{\pi^2}$
+	\\
+\hline
+	\includegraphics[width=2cm]{idiotenseite/images/table_half-wave_rectified_sine.png} &
+	$\begin{cases} A\cdot\sin (t) & 0<t<\pi  \\ 0 & \textrm{somst}\end{cases}$ &
+	$\frac{1}{\pi}\approx 0.318$ &
+	$\frac{\pi}{2}\approx 1.571$ &
+	$\frac{1}{2} = 0.5$	&
+	2  &
+	$\frac{A}{\pi}$ &
+	$\frac{A^2}{4}$ & $\frac{A^2}{4}-\frac{A^2}{\pi^2}$
+	\\
+\hline
+	\includegraphics[width=2cm]{idiotenseite/images/table_triangle_wave.png} &
+	$A\cdot\Lambda(t)$ &
+	$\frac{1}{2}= 0.5$ &
+	$\frac{2}{\sqrt{3}}\approx 1.155$ &
+	$\frac{1}{\sqrt{3}}
+	\approx 0.557$ &
+	$\sqrt{3} \approx 1.732$ &
+	$0$ &
+	$\frac{A^2}{3}$ &
+	$\frac{A^2}{3}$ \\
+\hline	
+	\includegraphics[width=2cm]{idiotenseite/images/table_square_wave.png} &
+	$\begin{cases} A & 0<x<t \\ 0 & \textrm{sonst}\end{cases}$ &
+	$1$ &
+	$1$ &
+	$1$ &
+	$1$ &
+	$0$ &
+	$A^2$ &
+	$A^2$ \\
+\hline	
+	DC&
+	1&
+	$1$ &
+	$1$ &
+	$1$ &
+	$1$  &
+	-&
+	-&
+	-\\
+\hline	
+	\includegraphics[width=2cm]{idiotenseite/images/table_pulse_wide_wave.png} &
+	&
+	$\frac{t_1}{T}$ & $\sqrt{\frac{T}{t_1}}$ & $\sqrt{\frac{t_1}{T}}$ & $\sqrt{\frac{T}{t_1}}$ &
+	$A\frac{t}{T}$ &
+	$A^2\frac{t}{T}$ &
+	$\frac{A^2t}{T}-\frac{A^2t^2}{T^2}$\\
+\hline
+\end{tabular}
+%\end{center}
+\end{sidewaystable}
+

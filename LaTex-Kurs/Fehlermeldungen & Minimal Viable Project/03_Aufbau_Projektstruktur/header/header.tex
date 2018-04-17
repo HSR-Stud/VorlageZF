@@ -1,0 +1,73 @@
+%Schriftgr"osse, Layout, Papierformat, Art des Dokumentes
+\documentclass[10pt,a4paper,fleqn,headsepline,footsepline]{scrartcl}
+%Einstellungen der Seitenränder
+\usepackage[left=0.8cm,right=0.8cm,top=0.5cm,bottom=0.5cm,includeheadfoot]{geometry}
+% Sprache, Zeichensatz, packages
+\usepackage[UTF8]{inputenc}
+\usepackage[ngerman]{babel,varioref}
+\usepackage{amssymb,amsmath,graphicx,xcolor,lastpage,wrapfig,verbatim}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{rotating}
+\usepackage{floatflt}
+\usepackage{array}
+\usepackage{scrlayer-scrpage}
+\usepackage{multirow,multicol}
+\usepackage{trfsigns, trsym}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{afterpage}
+%
+\setkomafont{pageheadfoot}{\footnotesize}
+%
+%
+\RedeclareSectionCommands[
+  beforeskip=-.2\baselineskip,
+  afterskip=.1\baselineskip
+]{section,subsection,subsubsection,paragraph}
+
+\definecolor{pgrey}{rgb}{0.2,0.2,0.2}
+\definecolor{black}{rgb}{0,0,0}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{white}{rgb}{1,1,1}
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+\definecolor{green}{rgb}{0,.8,0.05}
+\definecolor{brown}{rgb}{0.603,0,0}
+
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Imag}{Im}
+%\DeclareMathOperator{\e}{e}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\PolyGrad}{PolyGrad}
+
+
+%
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\nopagebreak}
+\newcommand{\formelbuch}[1]{$\quad{\textcolor{pgrey}{\mbox{\small{S#1}}}}$}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+\newcommand{\arraystretchOriginal}{1.5}
+\renewcommand{\arraystretch}{\arraystretchOriginal}
+
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+\author{\authorinfo}
+\title{\titleinfo}
+%
+%Kopf- und Fusszeile
+%
+\lohead*{\titleinfo}
+\rohead*{\today}
+\lofoot*{\authorinfo}
+\cofoot*{}
+\rofoot*{Seite \thepage { }von \pageref{LastPage}}
+%
+\pagestyle{scrheadings}
+
