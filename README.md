@@ -4,6 +4,8 @@ Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-St
 Falls du noch keine Ahnung von HSR-Stud, Latex oder GitHub im Allgemeinen hast, \
 findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen.
 
+[![Build Status](https://travis-ci.org/HSR-Stud/PredMod.svg?branch=master)](https://travis-ci.org/HSR-Stud/PredMod)
+
 ## README
 Ein README sollte folgende Bestandteile **zwingend** aufweisen:
 
