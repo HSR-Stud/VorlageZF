@@ -1,0 +1,36 @@
+notifications:
+  email: false
+sudo: required
+dist: trusty
+install:
+ - dir
+ - pwd
+ - source ./Travis/texlive_install.sh
+cache:
+  directories:
+    - /tmp/texlive
+    - $HOME/.texlive
+# Change working directory so including files will work
+before_script:
+- dir
+- pwd
+script:
+# Prefix command with travis_wait x so it times out after 3 mins, because when the LaTeX doesn't compile pdflatex just hangs instead of quitting.
+- travis_wait 3 pdflatex -interaction=nonstopmode -halt-on-error ./VorlageZFLaTex.tex
+# - bibtex ./VorlageZFLaTex.aux
+- travis_wait 3 pdflatex -interaction=nonstopmode -halt-on-error ./VorlageZFLaTex.tex
+- travis_wait 3 pdflatex -interaction=nonstopmode -halt-on-error ./VorlageZFLaTex.tex
+
+before_deploy:
+- dir
+deploy:
+  provider: releases
+  api_key:
+    secure: $GITHUB_RELEASE_TOKEN
+  file:
+    - ./VorlageZFLaTex.pdf
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
+
