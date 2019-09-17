@@ -2,7 +2,7 @@
 Das folgende Repo dient als Vorlage für die Erstellung von eigenen Repos. 
 Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-Stud/Willkommen/blob/master/HSR-Stud%20Vorgaben.md), um die Ordnung auf HSR-Stud zu erhalten und schaffen.  
 Falls du noch keine Ahnung von HSR-Stud, Latex oder GitHub im Allgemeinen hast, \
-findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen.
+findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen. \
 Weiterführende Infos wie ein Markdown-File funktioniert findest du [hier](https://guides.github.com/features/mastering-markdown)
 
 [![Build Status](https://travis-ci.org/HSR-Stud/PredMod.svg?branch=master)](https://travis-ci.org/HSR-Stud/PredMod)
