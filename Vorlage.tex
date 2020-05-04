@@ -1,33 +1,47 @@
-% !TeX program = pdflatex
+% !TeX program = xelatex
 % !TeX encoding = utf8
-
-%BEi Namensänderung des Dokuments auch die nachfolgende Zeile anpassen
 % !TeX root = Vorlage.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-% Dokumentinformationen %
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Vorlage}
-\author{\href{mailto:lmazzole@hsr.ch}{L. Mazzoleni}}
-% \newcommand{\authoremail}{\href{mailto:lmazzole@hsr.ch}{lmazzole@hsr.ch} }
-% \newcommand{\versioninfo}{$ V1.1 $}
+%% TODO: use future HSR class
+\documentclass[twoside,a4paper]{article}
 
-\documentclass[10pt,twoside,a4paper,fleqn]{scrartcl}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Standard Header für 
-% - Makros 
-% - Farben
-% - Mathematische Operatoren
-% \include{header/zusammenfassung}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Ergänzungen für Package kommen hier hin:
-\usepackage{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+
+%% TODO: get the hsrstud package
+
+%% Language configuration
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=swiss]{german}
+
+%% License configuration
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+    lang={german},
+]{doclicense}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Metadata
+
+\title{\textsl{Module} Zusammenfassung}
+\author{\textsl{Vorname Name}}
+\date{\today}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
 
 \begin{document}
+
 \maketitle
 \tableofcontents
+
+\section{Introduction}
+You're on a psycho holiday ...
+
+\section{Lizenz}
+\doclicenseThis
+
 \end{document}
