@@ -2,13 +2,14 @@
 % !TeX encoding = utf8
 % !TeX root = Vorlage.tex
 
-%% TODO: use future HSR class
-\documentclass[twoside,a4paper]{article}
+%% TODO: publish to CTAN
+\documentclass[]{tex/hsrzf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages
 
-%% TODO: get the hsrstud package
+%% TODO: publish to CTAN
+\usepackage{tex/hsrstud}
 
 %% Language configuration
 \usepackage{polyglossia}
@@ -25,10 +26,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Metadata
 
-\title{\textsl{Module} Zusammenfassung}
-\author{\textsl{Vorname Name}}
-\date{\today}
+\course{Elektrotechnik}
+\module{ModAbk}
+\semester{Fr\"uhlingssemester 2020}
 
+\authoremail{vname@hsr.ch}
+\author{\textsl{Vorname Name} -- \texttt{\theauthoremail}}
+
+\title{\texttt{\themodule} Zusammenfassung}
+\date{\thesemester}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document
@@ -38,10 +44,15 @@
 \maketitle
 \tableofcontents
 
-\section{Introduction}
-You're on a psycho holiday ...
+\section{Einf\"uhrung}
+\[
+  i\hbar \partial_t \left| \psi(t) \right\rangle 
+    = \hat{H} \left| \psi(t) \right\rangle
+\]
+
 
 \section{Lizenz}
 \doclicenseThis
+
 
 \end{document}
