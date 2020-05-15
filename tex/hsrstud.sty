@@ -1,0 +1,395 @@
+%%
+%% This is file `hsrstud.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% hsrstud.dtx  (with options: `package')
+%% This document is part of the HSRStud LaTeX Package
+%% 
+%% THE FOLLOWING WORK IS UNDER THE CC BY-SA 4.0 LICENSE
+%% 
+%% You are free to
+%% ---------------
+%%   * Share -- Copy and redistribute the material in any medium or format
+%%   * Adapt -- Remix, transform, and build upon the material for any
+%%              purpose, even commercially
+%% 
+%% The licensor cannot revoke these freedoms as long as you follow the
+%% license terms.
+%% 
+%% Under the following terms
+%% -------------------------
+%%   * Attribution
+%%     You must give appropriate credit, provide a link to the license, and
+%%     indicate if changes were made. You may do so in any reasonable
+%%     manner, but not in any way that suggests the licensor endorses you
+%%     or your use.
+%% 
+%%   * ShareAlike
+%%     If you remix, transform, or build upon the material you must
+%%     distribute your contributions under the same license as the
+%%     original.
+%% 
+%%   * No additional restrictions
+%%     You may not apply legal terms or technological measures that
+%%     legally restrict others from doing anything the license permits.
+%% 
+%% Notice
+%% ------
+%% You do not have to comply with the license for elements of the material
+%% in the public domain or where your use is permitted by an applicable
+%% exception or limitation.
+%% 
+%% No warranties are given. The license may not give you all of the
+%% permissions necessary for your intended use. For example, other rights
+%% such as publicity, privacy, or moral rights may limit how you use the
+%% material.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hsrstud}[2020/04/16 v0.1 HSR-Stud Macros]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Dependencies ((
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{bm}
+
+\RequirePackage{esint}
+\PassOptionsToPackage{b}{esvect}
+\RequirePackage{esvect}
+
+\RequirePackage{xcolor}
+\RequirePackage{hyperref}
+\RequirePackage{listings}
+
+\RequirePackage{iftex}
+\RequirePackage{kvoptions}
+%% ))
+
+\SetupKeyvalOptions{
+    family=hsr,
+    prefix=hsr@
+}
+
+%% Enable backwards-compatibility
+\DeclareBoolOption[false]{legacy}
+
+%% Do not renew LaTeX Macros
+\DeclareBoolOption[false]{dontrenew}
+
+%% Vector style
+\DeclareBoolOption[false]{arrowvec}
+\DeclareComplementaryOption{boldvec}{arrowvec}
+
+%% Vector derivative style
+\DeclareBoolOption[false]{textvecdiff}
+\DeclareComplementaryOption{delvecdiff}{textvecdiff}
+
+%% Process options
+\ProcessLocalKeyvalOptions*
+
+%% TODO: change letters in german
+\newcommand{\bookref}[1]{\texttt{\textcolor{hsr-mauve}{P.#1}}}
+\newcommand{\notesref}[1]{\texttt{\textcolor{hsr-blue}{S.#1}}}
+\newcommand{\lectureref}[1]{\texttt{\textcolor{hsr-lakegreen}{L.#1}}}
+
+%% Theming for hyperref and listings ((
+\hypersetup{
+    colorlinks=true,
+    linkcolor=hsr-black,
+    citecolor=hsr-mauve,
+    filecolor=hsr-black,
+    urlcolor=hsr-blue,
+}
+
+%% Common listings settings
+\lstdefinestyle{hsr-base}{
+    belowcaptionskip=\baselineskip,
+    breaklines=true,
+    frame=none,
+    inputencoding=utf8,
+    % margin
+    xleftmargin=\parindent,
+    % numbers
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\ttfamily\footnotesize\color{hsr-black40},
+    % background
+    backgroundcolor=\color{white},
+    showstringspaces=false,
+    % default language
+    language=[LaTeX]TeX,
+    % font
+    basicstyle=\ttfamily\small,
+    identifierstyle=\color{hsr-black},
+    keywordstyle=\color{hsr-blue},
+    commentstyle=\color{hsr-black40},
+    stringstyle=\color{hsr-mauve80},
+}
+
+%% Define missing languages / aliases
+\lstdefinelanguage{LaTeX}{
+    language=[LaTeX]Tex
+}
+
+%% Set style
+\lstset{style=hsr-base, escapechar=`}
+%%))
+
+%% Vector ((
+\newcommand{\hsrvecbold}[1]{\mathbf{\boldsymbol{#1}}}
+\newcommand{\hsrvecarrow}[1]{\vv{\mathrm{#1}}} % from esvect
+
+\newcommand{\@hsrvecf}[1]{\hsrvecbold{#1}}
+\ifhsr@arrowvec
+    \renewcommand{\@hsrvecf}[1]{\hsrvecarrow{#1}}
+\fi
+
+\ifhsr@dontrenew
+    \newcommand{\vc}{\@hsrvecf}
+\else
+    % save previous command
+    \newcommand{\vaccent}{\v}
+    \newcommand{\oldvec}{\vec}
+    % redefine
+    \renewcommand{\v}[1]{\@hsrvecf{#1}}
+    \renewcommand{\vec}[1]{\@hsrvecf{#1}}
+\fi
+%%))
+
+%% Unit vector ((
+\newcommand{\hsruvecbold}[1]{\vec{\hat{#1}}}
+\newcommand{\hsruvecarrow}[1]{\hat{\mathrm{#1}}}
+\newcommand{\@hsruvecf}[1]{\hsruvecbold{#1}}
+\ifhsr@arrowvec
+    \renewcommand{\@hsruvecf}[1]{\hsruvecarrow{#1}}
+\fi
+
+\newcommand{\uv}[1]{\@hsruvecf{#1}}
+\newcommand{\uvec}[1]{\@hsruvecf{#1}}
+%%))
+
+%% Products ((
+\newcommand{\dotp}{\boldsymbol\cdot}
+\newcommand{\crossp}{\boldsymbol\times}
+\newcommand{\cross}{\crossp}
+%%))
+
+\newcommand{\mtx}[1]{\mathrm{#1}}
+\newcommand{\ten}[1]{\underline{\mathbf{\boldsymbol{#1}}}}
+
+\newcommand{\heq}{\stackrel{\hat{\texttt{H}}}{=}}
+
+\newcommand{\dd}[2][]{\mathrm{d}^{#1} #2}
+\newcommand{\di}[2][]{\,\dd[#1]{#2}}
+
+\newcommand{\deriv}[3][]{\frac{\dd[#1]{#2}}{\dd[]{#3^{#1}}}}
+\newcommand{\pderiv}[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}
+
+%% Gradient ((
+\ifhsr@textvecdiff
+    \newcommand{\grad}{\text{grad }}
+\else
+    \newcommand{\grad}{\nabla}%
+\fi
+%% ))
+
+%% Divergence ((
+\ifhsr@textvecdiff
+    \newcommand{\@hsrdivf}{\text{div }}
+\else
+    \newcommand{\@hsrdivf}{\nabla\cdot}
+\fi
+\ifhsr@dontrenew
+    \newcommand{\divg}{\@hsrdivf}
+\else
+    \let\divsymb=\div
+    \renewcommand{\div}{\@hsrdivf}
+\fi
+%% ))
+
+%% Curl ((
+\ifhsr@textvecdiff
+    \newcommand{\curl}{\text{curl }}
+\else
+    \newcommand{\curl}{\nabla\times}
+\fi
+%% ))
+
+%% laplacian ((
+\ifhsr@textvecdiff
+    \newcommand{\laplace}{\text{div grad }}
+\else
+    \newcommand{\laplace}{\nabla^2}
+\fi
+%% ))
+
+\definecolor{hsr-blue}{HTML}{0065A3}
+\definecolor{hsr-blue80}{HTML}{3384B5}
+\definecolor{hsr-blue60}{HTML}{66A3C8}
+\definecolor{hsr-blue40}{HTML}{99C1DA}
+\definecolor{hsr-blue20}{HTML}{CCE0ED}
+
+\definecolor{hsr-mauve}{HTML}{6E1C50}
+\definecolor{hsr-mauve80}{HTML}{8B4973}
+\definecolor{hsr-mauve60}{HTML}{A87796}
+\definecolor{hsr-mauve40}{HTML}{C5A4B9}
+\definecolor{hsr-mauve20}{HTML}{E2D2DC}
+
+\definecolor{hsr-lakegreen}{HTML}{548C86}
+\definecolor{hsr-lakegreen80}{HTML}{76A39E}
+\definecolor{hsr-lakegreen60}{HTML}{98BAB6}
+\definecolor{hsr-lakegreen40}{HTML}{BBD1CF}
+\definecolor{hsr-lakegreen20}{HTML}{DDE8E7}
+
+\definecolor{hsr-reed}{HTML}{7B6951}
+\definecolor{hsr-reed80}{HTML}{958774}
+\definecolor{hsr-reed60}{HTML}{B0A597}
+\definecolor{hsr-reed40}{HTML}{CAC3B9}
+\definecolor{hsr-reed20}{HTML}{E5E1DC}
+
+\definecolor{hsr-petrol}{HTML}{00738D}
+\definecolor{hsr-petrol80}{HTML}{338FA4}
+\definecolor{hsr-petrol60}{HTML}{66ABBB}
+\definecolor{hsr-petrol40}{HTML}{99C7D1}
+\definecolor{hsr-petrol20}{HTML}{CCE3E8}
+
+\definecolor{hsr-basswood}{HTML}{BABD5D}
+\definecolor{hsr-basswood80}{HTML}{C8CA7D}
+\definecolor{hsr-basswood60}{HTML}{D6D79E}
+\definecolor{hsr-basswood40}{HTML}{E3E5BE}
+\definecolor{hsr-basswood20}{HTML}{F1F2DF}
+
+\definecolor{hsr-lightgrey}{HTML}{C6C7C8}
+\definecolor{hsr-lightgrey80}{HTML}{D1D2D3}
+\definecolor{hsr-lightgrey60}{HTML}{DDDDDE}
+\definecolor{hsr-lightgrey40}{HTML}{E8E8E9}
+\definecolor{hsr-lightgrey20}{HTML}{F4F4F4}
+
+\definecolor{hsr-black}{HTML}{1A171B}
+\definecolor{hsr-black80}{HTML}{484549}
+\definecolor{hsr-black60}{HTML}{767476}
+\definecolor{hsr-black40}{HTML}{A4A2A4}
+\definecolor{hsr-black20}{HTML}{D1D1D1}
+
+\ifhsr@legacy
+%% Makros für Titel, Autor und Datum ((
+%% Dank diesem Makro stehen Titel, Autor und Datum überall im Dokument zur verfügung
+%% Date hat zudem den Default-Wert \today
+\def\@Title{}
+\def\@Author{}
+\def\@Date{\today}
+\newcommand{\Title}{\@Title}
+\newcommand{\Author}{\@Author}
+\newcommand{\Date}{\@Date}
+\AtBeginDocument{%
+  \let\@Title\@title
+  \let\@Author\@author
+  \let\@Date\@date
+}
+%% ))
+
+%% Makros für den Arraystretch  ((
+%% bei uns meist in Tabellen genutzt, welche Formeln enthalten
+
+%% Default Value
+\def\@ArrayStretchDefault{1} % Entspricht der Voreinstellung von Latex
+
+%% Setzt einen neuen Wert für den arraystretch
+\newcommand{\setArrayStretch}[1]{\renewcommand{\arraystretch}{#1}}
+
+%% Setzt den arraystretch zurück auf den default wert
+\newcommand{\resetArrayStretch}{\renewcommand{\arraystretch}{\@ArrayStretchDefault}}
+
+%% Makro zum setzten des Default arraystretch.
+%% Kann nur in der Präambel verwendet werden.
+\newcommand{\setDefaultArrayStretch}[1]{%
+\AtBeginDocument{%
+\def\@ArrayStretchDefault{#1}
+\renewcommand{\arraystretch}{#1}
+}
+}
+%% ))
+
+%% Command for images in table
+\newcommand\tabImg[2][]{%
+    \raisebox{0pt}[\dimexpr\totalheight+\dp\strutbox\relax][\dp\strutbox]{%
+        \includegraphics[#1]{#2}%
+    }%
+}
+
+%% Makros für Verweise auf ein Buch oder Skript ((
+\newcommand{\buch}[1]{\texorpdfstring{$_{\textcolor{HSRLakeGreen}{\mbox{\small{#1}}}}$}{}}
+\newcommand{\buchSeite}[1]{\texorpdfstring{\ensuremath{_{\textcolor{red}{\mbox{\small{ S#1}}}}}}{}}
+\newcommand{\skript}[1]{\texorpdfstring{$_{\textcolor{HSRReed}{\mbox{\small{#1}}}}$}{}}
+\newcommand{\formelbuch}[1]{$_{\textcolor{red}{\mbox{\small{S#1}}}}$}
+%% ))
+
+\setlength{\parindent}{0pt}
+
+%% Todo command
+\newcommand{\todo}[1]{\textbf{\color{red}{TO DO: #1}}}
+
+%% Color names ((
+\colorlet{HSRWhite}{white}
+
+\colorlet{HSRBlue}{hsr-blue}
+\colorlet{HSRBlue80}{hsr-blue80}
+\colorlet{HSRBlue60}{hsr-blue60}
+\colorlet{HSRBlue40}{hsr-blue40}
+\colorlet{HSRBlue20}{hsr-blue20}
+
+\colorlet{HSRLightGray}{hsr-lightgrey}
+\colorlet{HSRLightGray80}{hsr-lightgrey80}
+\colorlet{HSRLightGray60}{hsr-lightgrey60}
+\colorlet{HSRLightGray40}{hsr-lightgrey40}
+\colorlet{HSRLightGray20}{hsr-lightgrey20}
+
+\colorlet{HSRSchwarz}{hsr-black}
+\colorlet{HSRSchwarz80}{hsr-black80}
+\colorlet{HSRSchwarz60}{hsr-black60}
+\colorlet{HSRSchwarz40}{hsr-black40}
+\colorlet{HSRSchwarz20}{hsr-black20}
+
+\colorlet{HSRHematite}{hsr-mauve}
+\colorlet{HSRHematite80}{hsr-mauve80}
+\colorlet{HSRHematite60}{hsr-mauve60}
+\colorlet{HSRHematite40}{hsr-mauve40}
+\colorlet{HSRHematite20}{hsr-mauve20}
+
+\colorlet{HSRLakeGreen}{hsr-lakegreen}
+\colorlet{HSRLakeGreen80}{hsr-lakegreen80}
+\colorlet{HSRLakeGreen60}{hsr-lakegreen60}
+\colorlet{HSRLakeGreen40}{hsr-lakegreen40}
+\colorlet{HSRLakeGreen20}{hsr-lakegreen20}
+
+\colorlet{HSRReed}{hsr-reed}
+\colorlet{HSRReed80}{hsr-reed80}
+\colorlet{HSRReed60}{hsr-reed60}
+\colorlet{HSRReed40}{hsr-reed40}
+\colorlet{HSRReed20}{hsr-reed20}
+
+\colorlet{HSRPetrol}{hsr-petrol}
+\colorlet{HSRPetrol80}{hsr-petrol80}
+\colorlet{HSRPetrol60}{hsr-petrol60}
+\colorlet{HSRPetrol40}{hsr-petrol40}
+\colorlet{HSRPetrol20}{hsr-petrol20}
+
+\colorlet{HSRBasswood}{hsr-basswood}
+\colorlet{HSRBasswood80}{hsr-basswood80}
+\colorlet{HSRBasswood60}{hsr-basswood60}
+\colorlet{HSRBasswood40}{hsr-basswood40}
+\colorlet{HSRBasswood20}{hsr-basswood20}
+%% ))
+
+\fi %% ifhsr@legacy
+
+\endinput
+%%
+%% End of file `hsrstud.sty'.

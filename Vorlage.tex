@@ -1,42 +1,58 @@
-% !TeX program = pdflatex
+% !TeX program = xelatex
 % !TeX encoding = utf8
-
-%BEi Namensänderung des Dokuments auch die nachfolgende Zeile anpassen
 % !TeX root = Vorlage.tex
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-% Dokumentinformationen %
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Vorlage}
-\author{\href{mailto:lmazzole@hsr.ch}{L. Mazzoleni}}
-\newcommand{\authoremail}{\href{mailto:lmazzole@hsr.ch}{lmazzole@hsr.ch} }
-\newcommand{\versioninfo}{$ V1.1 $}
+%% TODO: publish to CTAN
+\documentclass[]{tex/hsrzf}
 
-\documentclass[10pt,twoside,a4paper,fleqn]{scrartcl}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Standard Header für 
-% - Makros 
-% - Farben
-% - Mathematische Operatoren
-\include{header/zusammenfassung}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Ergänzungen für Package kommen hier hin:
-%\usepackage{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
 
+%% TODO: publish to CTAN
+\usepackage{tex/hsrstud}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Language configuration
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=swiss]{german}
+
+%% License configuration
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+    lang={german},
+]{doclicense}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Metadata
+
+\course{Elektrotechnik}
+\module{ModAbk}
+\semester{Fr\"uhlingssemester 2020}
+
+\authoremail{vname@hsr.ch}
+\author{\textsl{Vorname Name} -- \texttt{\theauthoremail}}
+
+\title{\texttt{\themodule} Zusammenfassung}
+\date{\thesemester}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
 
 \begin{document}
+
 \maketitle
 \tableofcontents
-\thispagestyle{empty}
-\clearpage
-\input{sections/Beispiel}
-\clearpage
-%%%
-\input{sections/V1}
-\clearpage
-%%%
-\input{idiotenseite/IdiotenseiteInclude}
+
+\section{Einf\"uhrung}
+\[
+  i\hbar \partial_t \left| \psi(t) \right\rangle 
+    = \hat{H} \left| \psi(t) \right\rangle
+\]
+
+
+\section{Lizenz}
+\doclicenseThis
+
+
 \end{document}
