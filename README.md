@@ -11,7 +11,7 @@ Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-St
    ```latex
    % !TEX root = Ph1Mech.tex
    ```
-3. `README.md` aktualisieren (gemass Vorlage [unten](#readme-vorlage))
+3. `README.md` aktualisieren (gemäss Vorlage [unten](#readme-vorlage))
 4. Zusammenfassen!
 
 ## README Vorlage
