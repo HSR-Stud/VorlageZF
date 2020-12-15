@@ -1,7 +1,7 @@
 # Vorlage Zusammenfassung
 
 Das folgende Repo dient als Vorlage für die Erstellung von eigenen Repos.
-Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-Stud/Guidelines), um die Ordnung auf HSR-Stud zu erhalten und schaffen. Falls du noch keine Ahnung von HSR-Stud, LaTeX oder Git im Allgemeinen hast, findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen. Weiterführende Infos wie ein Markdown-File funktioniert findest du [hier](https://guides.github.com/features/mastering-markdown).
+Bitte beachte insbesondere folgende wenigen [Vorgaben](https://github.com/HSR-Stud/Willkommen/blob/master/contributing.md#i-want-to-write-a-new-cheat-sheet-for-a-module), um die Ordnung auf HSR-Stud zu erhalten und schaffen. Falls du noch keine Ahnung von HSR-Stud, LaTeX oder Git im Allgemeinen hast, findest du [hier](https://github.com/HSR-Stud/Willkommen) viele wichtige Informationen. Weiterführende Infos wie ein Markdown-File funktioniert findest du [hier](https://guides.github.com/features/mastering-markdown).
 
 ## How To Use
 
