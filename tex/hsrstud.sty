@@ -77,9 +77,6 @@
     prefix=hsr@
 }
 
-%% Enable backwards-compatibility
-\DeclareBoolOption[false]{legacy}
-
 %% Do not renew LaTeX Macros
 \DeclareBoolOption[false]{dontrenew}
 
@@ -125,6 +122,9 @@
     showstringspaces=false,
     % default language
     language=[LaTeX]TeX,
+    % break long lines, and show an arrow where the line was broken
+    breaklines=true,
+    postbreak=\mbox{\textcolor{hsr-blue}{$\hookrightarrow$}\space},
     % font
     basicstyle=\ttfamily\small,
     identifierstyle=\color{hsr-black},
@@ -151,9 +151,8 @@
     \renewcommand{\@hsrvecf}[1]{\hsrvecarrow{#1}}
 \fi
 
-\ifhsr@dontrenew
-    \newcommand{\vc}{\@hsrvecf}
-\else
+\newcommand{\vc}{\@hsrvecf}
+\ifhsr@dontrenew\else
     % save previous command
     \newcommand{\vaccent}{\v}
     \newcommand{\oldvec}{\vec}
@@ -194,39 +193,39 @@
 
 %% Gradient ((
 \ifhsr@textvecdiff
-    \newcommand{\grad}{\text{grad }}
+    \DeclareMathOperator{\grad}{grad}
 \else
-    \newcommand{\grad}{\nabla}%
+    \DeclareMathOperator{\grad}{\nabla}
 \fi
 %% ))
 
 %% Divergence ((
 \ifhsr@textvecdiff
-    \newcommand{\@hsrdivf}{\text{div }}
+    \newcommand{\@hsrdivf}{div}
 \else
     \newcommand{\@hsrdivf}{\nabla\cdot}
 \fi
-\ifhsr@dontrenew
-    \newcommand{\divg}{\@hsrdivf}
-\else
+
+\DeclareMathOperator{\divg}{\@hsrdivf}
+\ifhsr@dontrenew\else
     \let\divsymb=\div
-    \renewcommand{\div}{\@hsrdivf}
+    \renewcommand{\div}{\operatorname{\@hsrdivf}}
 \fi
 %% ))
 
 %% Curl ((
 \ifhsr@textvecdiff
-    \newcommand{\curl}{\text{curl }}
+    \DeclareMathOperator{\curl}{curl}
 \else
-    \newcommand{\curl}{\nabla\times}
+    \DeclareMathOperator{\curl}{\nabla\times}
 \fi
 %% ))
 
 %% laplacian ((
 \ifhsr@textvecdiff
-    \newcommand{\laplace}{\text{div grad }}
+    \DeclareMathOperator{\laplace}{div grad}
 \else
-    \newcommand{\laplace}{\nabla^2}
+    \DeclareMathOperator{\laplace}{\nabla^2}
 \fi
 %% ))
 
@@ -277,118 +276,6 @@
 \definecolor{hsr-black60}{HTML}{767476}
 \definecolor{hsr-black40}{HTML}{A4A2A4}
 \definecolor{hsr-black20}{HTML}{D1D1D1}
-
-\ifhsr@legacy
-%% Makros für Titel, Autor und Datum ((
-%% Dank diesem Makro stehen Titel, Autor und Datum überall im Dokument zur verfügung
-%% Date hat zudem den Default-Wert \today
-\def\@Title{}
-\def\@Author{}
-\def\@Date{\today}
-\newcommand{\Title}{\@Title}
-\newcommand{\Author}{\@Author}
-\newcommand{\Date}{\@Date}
-\AtBeginDocument{%
-  \let\@Title\@title
-  \let\@Author\@author
-  \let\@Date\@date
-}
-%% ))
-
-%% Makros für den Arraystretch  ((
-%% bei uns meist in Tabellen genutzt, welche Formeln enthalten
-
-%% Default Value
-\def\@ArrayStretchDefault{1} % Entspricht der Voreinstellung von Latex
-
-%% Setzt einen neuen Wert für den arraystretch
-\newcommand{\setArrayStretch}[1]{\renewcommand{\arraystretch}{#1}}
-
-%% Setzt den arraystretch zurück auf den default wert
-\newcommand{\resetArrayStretch}{\renewcommand{\arraystretch}{\@ArrayStretchDefault}}
-
-%% Makro zum setzten des Default arraystretch.
-%% Kann nur in der Präambel verwendet werden.
-\newcommand{\setDefaultArrayStretch}[1]{%
-\AtBeginDocument{%
-\def\@ArrayStretchDefault{#1}
-\renewcommand{\arraystretch}{#1}
-}
-}
-%% ))
-
-%% Command for images in table
-\newcommand\tabImg[2][]{%
-    \raisebox{0pt}[\dimexpr\totalheight+\dp\strutbox\relax][\dp\strutbox]{%
-        \includegraphics[#1]{#2}%
-    }%
-}
-
-%% Makros für Verweise auf ein Buch oder Skript ((
-\newcommand{\buch}[1]{\texorpdfstring{$_{\textcolor{HSRLakeGreen}{\mbox{\small{#1}}}}$}{}}
-\newcommand{\buchSeite}[1]{\texorpdfstring{\ensuremath{_{\textcolor{red}{\mbox{\small{ S#1}}}}}}{}}
-\newcommand{\skript}[1]{\texorpdfstring{$_{\textcolor{HSRReed}{\mbox{\small{#1}}}}$}{}}
-\newcommand{\formelbuch}[1]{$_{\textcolor{red}{\mbox{\small{S#1}}}}$}
-%% ))
-
-\setlength{\parindent}{0pt}
-
-%% Todo command
-\newcommand{\todo}[1]{\textbf{\color{red}{TO DO: #1}}}
-
-%% Color names ((
-\colorlet{HSRWhite}{white}
-
-\colorlet{HSRBlue}{hsr-blue}
-\colorlet{HSRBlue80}{hsr-blue80}
-\colorlet{HSRBlue60}{hsr-blue60}
-\colorlet{HSRBlue40}{hsr-blue40}
-\colorlet{HSRBlue20}{hsr-blue20}
-
-\colorlet{HSRLightGray}{hsr-lightgrey}
-\colorlet{HSRLightGray80}{hsr-lightgrey80}
-\colorlet{HSRLightGray60}{hsr-lightgrey60}
-\colorlet{HSRLightGray40}{hsr-lightgrey40}
-\colorlet{HSRLightGray20}{hsr-lightgrey20}
-
-\colorlet{HSRSchwarz}{hsr-black}
-\colorlet{HSRSchwarz80}{hsr-black80}
-\colorlet{HSRSchwarz60}{hsr-black60}
-\colorlet{HSRSchwarz40}{hsr-black40}
-\colorlet{HSRSchwarz20}{hsr-black20}
-
-\colorlet{HSRHematite}{hsr-mauve}
-\colorlet{HSRHematite80}{hsr-mauve80}
-\colorlet{HSRHematite60}{hsr-mauve60}
-\colorlet{HSRHematite40}{hsr-mauve40}
-\colorlet{HSRHematite20}{hsr-mauve20}
-
-\colorlet{HSRLakeGreen}{hsr-lakegreen}
-\colorlet{HSRLakeGreen80}{hsr-lakegreen80}
-\colorlet{HSRLakeGreen60}{hsr-lakegreen60}
-\colorlet{HSRLakeGreen40}{hsr-lakegreen40}
-\colorlet{HSRLakeGreen20}{hsr-lakegreen20}
-
-\colorlet{HSRReed}{hsr-reed}
-\colorlet{HSRReed80}{hsr-reed80}
-\colorlet{HSRReed60}{hsr-reed60}
-\colorlet{HSRReed40}{hsr-reed40}
-\colorlet{HSRReed20}{hsr-reed20}
-
-\colorlet{HSRPetrol}{hsr-petrol}
-\colorlet{HSRPetrol80}{hsr-petrol80}
-\colorlet{HSRPetrol60}{hsr-petrol60}
-\colorlet{HSRPetrol40}{hsr-petrol40}
-\colorlet{HSRPetrol20}{hsr-petrol20}
-
-\colorlet{HSRBasswood}{hsr-basswood}
-\colorlet{HSRBasswood80}{hsr-basswood80}
-\colorlet{HSRBasswood60}{hsr-basswood60}
-\colorlet{HSRBasswood40}{hsr-basswood40}
-\colorlet{HSRBasswood20}{hsr-basswood20}
-%% ))
-
-\fi %% ifhsr@legacy
 
 \endinput
 %%

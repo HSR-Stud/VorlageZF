@@ -59,18 +59,17 @@
 
 %% Class options
 \SetupKeyvalOptions{
-  family=hsrzf,
-  prefix=hsrzf@
+  family=hsr,
+  prefix=hsr@
 }
 
 %% Use header and footer
 \DeclareBoolOption[false]{header}
 \DeclareComplementaryOption{noheader}{header}
 
-%% Use a sans-serif font
+%% Use a sans-serif slab-serif or concrete font
 \DeclareBoolOption[false]{sans}
 \DeclareBoolOption[false]{slab}
-
 \DeclareBoolOption[false]{concrete}
 
 %% Configures the geometry package
@@ -105,7 +104,7 @@
   \fi
 }
 
-\ProcessKeyvalOptions{hsrzf}
+\ProcessKeyvalOptions{hsr}
 
 %% Create new metadata fields
 
@@ -145,7 +144,7 @@
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{titling}
-\RequirePackage{lastpage}
+\RequirePackage{totpages}
 \RequirePackage{array}
 
 %% Insert metadata in the pdf
@@ -154,13 +153,13 @@
 
 
 %% Configure Sans-Serif font
-\ifhsrzf@sans
-  \ifhsrzf@slab
+\ifhsr@sans
+  \ifhsr@slab
     \PackageError{hsrzf}{%
       sans ans slab options cannot be used at the same time
     }
   \fi
-  \ifhsrzf@concrete{hsrzf}{%
+  \ifhsr@concrete{hsrzf}{%
     sans and concrete options cannot be used at the same time
   }
   \fi
@@ -172,13 +171,13 @@
 \fi
 
 %% Configure Slab-Serif font
-\ifhsrzf@slab
-  \ifhsrzf@sans
+\ifhsr@slab
+  \ifhsr@sans
     \PackageError{hsrzf}{%
       slab and sans options cannot be used at the same time
     }
   \fi
-  \ifhsrzf@concrete{hsrzf}{%
+  \ifhsr@concrete{hsrzf}{%
     slab and concrete options cannot be used at the same time
   }
   \fi
@@ -190,12 +189,12 @@
 \fi
 
 %% Configure (secret) concrete font
-\ifhsrzf@concrete
-  \ifhsrzf@sans{hsrzf}{%
+\ifhsr@concrete
+  \ifhsr@sans{hsrzf}{%
     concrete and sans options cannot be used at the same time
   }
   \fi
-  \ifhsrzf@slab
+  \ifhsr@slab
     \PackageError{hsrzf}{%
       concrete ans slab options cannot be used at the same time
     }
@@ -212,35 +211,35 @@
 \newlength{\hsr@hmarginwidth}
 \newlength{\hsr@vmarginheight}
 
-\ifx\hsrzf@margin\@empty
+\ifx\hsr@margin\@empty
   \setlength\hsr@hmarginwidth{30mm}
   \setlength\hsr@vmarginheight{30mm}
 \else
-  \expandafter\ifstrequal\expandafter{\hsrzf@margin}{huge}{
+  \expandafter\ifstrequal\expandafter{\hsr@margin}{huge}{
     \setlength\hsr@hmarginwidth{45mm}
     \setlength\hsr@vmarginheight{40mm}}{}
 %%
-  \expandafter\ifstrequal\expandafter{\hsrzf@margin}{large}{
+  \expandafter\ifstrequal\expandafter{\hsr@margin}{large}{
     \setlength\hsr@hmarginwidth{35mm}
     \setlength\hsr@vmarginheight{35mm}}{}
 %%
-  \expandafter\ifstrequal\expandafter{\hsrzf@margin}{big}{
+  \expandafter\ifstrequal\expandafter{\hsr@margin}{big}{
     \setlength\hsr@hmarginwidth{30mm}
     \setlength\hsr@vmarginheight{30mm}}{}
 %%
-  \expandafter\ifstrequal\expandafter{\hsrzf@margin}{normal}{
+  \expandafter\ifstrequal\expandafter{\hsr@margin}{normal}{
     \setlength\hsr@hmarginwidth{25mm}
     \setlength\hsr@vmarginheight{30mm}}{}
 %%
-  \expandafter\ifstrequal\expandafter{\hsrzf@margin}{small}{
+  \expandafter\ifstrequal\expandafter{\hsr@margin}{small}{
     \setlength\hsr@hmarginwidth{20mm}
     \setlength\hsr@vmarginheight{20mm}}{}
 %%
-  \expandafter\ifstrequal\expandafter{\hsrzf@margin}{tiny}{
+  \expandafter\ifstrequal\expandafter{\hsr@margin}{tiny}{
     \setlength\hsr@hmarginwidth{10mm}
     \setlength\hsr@vmarginheight{20mm}}{}
 %%
-  \expandafter\ifstrequal\expandafter{\hsrzf@margin}{minimal}{
+  \expandafter\ifstrequal\expandafter{\hsr@margin}{minimal}{
     \setlength\hsr@hmarginwidth{ 5mm}
     \setlength\hsr@vmarginheight{20mm}}{}
 %%
@@ -261,27 +260,33 @@
 
 \fancypagestyle{hsrzf}{%
     \fancyhf{} % clear
-    \fancyhead[C]{\thetitle}
-    \fancyhead[R]{\rightmark}
     \fancyhead[L]{\leftmark}
-    \fancyfoot[R]{\@date}
-    \fancyfoot[L]{\theauthor}
+    \fancyhead[C]{\themodule}
+    \fancyhead[R]{\@date}
+
+    \fancyfoot[L]{\href{https://github.com/HSR-Stud/}{\texttt{HSR-Stud}}}
+    \fancyfoot[C]{\texttt{CC BY-NC-SA}}
+    \fancyfoot[R]{\thepage ~/ \pageref{TotPages}}
+
     \renewcommand{\headrulewidth}{.5pt}
     \renewcommand{\footrulewidth}{.5pt}
 }
 
 \fancypagestyle{hsrzf-norulers}{%
     \fancyhf{} % clear
-    \fancyhead[C]{\thetitle}
-    \fancyhead[R]{\rightmark}
     \fancyhead[L]{\leftmark}
-    \fancyfoot[R]{\@date}
-    \fancyfoot[L]{\theauthor}
+    \fancyhead[C]{\themodule}
+    \fancyhead[R]{\@date}
+
+    \fancyfoot[L]{\href{https://github.com/HSR-Stud/}{\texttt{HSR-Stud}}}
+    \fancyfoot[C]{\texttt{CC BY-NC-SA}}
+    \fancyfoot[R]{\thepage ~/ \pageref{TotPages}}
+
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
 }
 
-\ifhsrzf@header
+\ifhsr@header
 \pagestyle{hsrzf}
 \fi
 
