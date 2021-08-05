@@ -48,7 +48,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{hsrstud}[2020/04/16 v0.1 HSR-Stud Macros]
+\ProvidesPackage{hsrstud}[2021/08/04 v0.2 HSR-Stud Macros]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -143,7 +143,7 @@
 %%))
 
 %% Vector ((
-\newcommand{\hsrvecbold}[1]{\mathbf{\boldsymbol{#1}}}
+\newcommand{\hsrvecbold}[1]{\mathbf{\bm{#1}}}
 \newcommand{\hsrvecarrow}[1]{\vv{\mathrm{#1}}} % from esvect
 
 \newcommand{\@hsrvecf}[1]{\hsrvecbold{#1}}
@@ -177,11 +177,9 @@
 %% Products ((
 \newcommand{\dotp}{\boldsymbol\cdot}
 \newcommand{\crossp}{\boldsymbol\times}
-\newcommand{\cross}{\crossp}
 %%))
 
-\newcommand{\mtx}[1]{\mathrm{#1}}
-\newcommand{\ten}[1]{\underline{\mathbf{\boldsymbol{#1}}}}
+\newcommand{\mx}[1]{\bm{\mathrm{#1}}}
 
 \newcommand{\heq}{\stackrel{\hat{\texttt{H}}}{=}}
 
@@ -195,7 +193,7 @@
 \ifhsr@textvecdiff
     \DeclareMathOperator{\grad}{grad}
 \else
-    \DeclareMathOperator{\grad}{\nabla}
+\newcommand{\grad}{\vec{\nabla}}
 \fi
 %% ))
 
@@ -203,7 +201,7 @@
 \ifhsr@textvecdiff
     \newcommand{\@hsrdivf}{div}
 \else
-    \newcommand{\@hsrdivf}{\nabla\cdot}
+\newcommand{\@hsrdivf}{\vec{\nabla}\dotp}
 \fi
 
 \DeclareMathOperator{\divg}{\@hsrdivf}
@@ -217,15 +215,21 @@
 \ifhsr@textvecdiff
     \DeclareMathOperator{\curl}{curl}
 \else
-    \DeclareMathOperator{\curl}{\nabla\times}
+\DeclareMathOperator{\curl}{\vec{\nabla}\crossp}
 \fi
 %% ))
 
 %% laplacian ((
 \ifhsr@textvecdiff
-    \DeclareMathOperator{\laplace}{div grad}
+    \DeclareMathOperator{\laplacian}{div grad}
 \else
-    \DeclareMathOperator{\laplace}{\nabla^2}
+    \DeclareMathOperator{\laplacian}{\nabla^2}
+\fi
+
+\ifhsr@textvecdiff
+    \DeclareMathOperator{\vlaplacian}{div grad}
+\else
+\DeclareMathOperator{\vlaplacian}{\vec{\nabla}^2}
 \fi
 %% ))
 

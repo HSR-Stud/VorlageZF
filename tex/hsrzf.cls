@@ -57,6 +57,9 @@
 \RequirePackage{kvoptions}
 \RequirePackage{etoolbox}
 
+%% Default font
+\RequirePackage{lmodern}
+
 %% Class options
 \SetupKeyvalOptions{
   family=hsr,
