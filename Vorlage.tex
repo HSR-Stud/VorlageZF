@@ -3,7 +3,7 @@
 % !TeX root = Vorlage.tex
 
 %% TODO: publish to CTAN
-\documentclass[]{tex/hsrzf}
+\documentclass[margin=normal]{tex/hsrzf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages
@@ -30,7 +30,7 @@
 \module{ModAbk}
 \semester{Fr\"uhlingssemester 2020}
 
-\authoremail{vname@hsr.ch}
+\authoremail{vorname.name@ost.ch}
 \author{\textsl{Vorname Name} -- \texttt{\theauthoremail}}
 
 \title{\texttt{\themodule} Zusammenfassung}
@@ -41,18 +41,28 @@
 
 \begin{document}
 
+% use roman numberals for introductiory pages
+\pagenumbering{roman}
+
 \maketitle
+
+% \begin{abstract}
+% \end{abstract}
+
 \tableofcontents
+
+\section*{Lizenz}
+\doclicenseThis
+
+% actual content
+\clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
 
 \section{Einf\"uhrung}
 \[
   i\hbar \partial_t \left| \psi(t) \right\rangle 
     = \hat{H} \left| \psi(t) \right\rangle
 \]
-
-
-\section{Lizenz}
-\doclicenseThis
-
 
 \end{document}
