@@ -2,25 +2,25 @@
 % !TeX encoding = utf8
 % !TeX root = Vorlage.tex
 
-%% TODO: publish to CTAN
-\documentclass[margin=normal]{tex/hsrzf}
+\documentclass[margin=normal]{hsrzf}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages
 
-%% TODO: publish to CTAN
-\usepackage{tex/hsrstud}
+%% The OST Student's package
+\usepackage{oststud}
 
 %% Language configuration
 \usepackage{polyglossia}
 \setdefaultlanguage[variant=swiss]{german}
+\setotherlanguage{english}
 
 %% License configuration
 \usepackage[
-    type={CC},
-    modifier={by-nc-sa},
-    version={4.0},
-    lang={german},
+  type={CC},
+  modifier={by-nc-sa},
+  version={4.0},
+  lang={german},
 ]{doclicense}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -70,10 +70,162 @@
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-\section{Einf\"uhrung}
-\[
-  i\hbar \partial_t \left| \psi(t) \right\rangle 
-    = \hat{H} \left| \psi(t) \right\rangle
-\]
+% I like to use 2 columns, you can remove this line to have one column.
+\twocolumn
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sample content
+
+\begin{english}
+  \section{How to use this template}
+
+  \subsection{Introduction}
+
+  This template is built on top of the
+  \texttt{\textcolor{OSTBlackberry}{OST}stud} package, which provides many
+  useful features such as sane defaults and nice macros (see
+  \S\ref{sec:howto:sample}). The complete documentation can be found at
+
+  \begin{center}
+    \url{https://ctan.org/pkg/oststud}
+  \end{center}
+
+  By default the main language is German and the secondary language is English,
+  you can change this on top of the document by editing the lines
+  \lstinline|\setotherlanguage{}| and \lstinline|\setmainlanguage{}|. Further
+  the default license is CC-BY-NC, also in German. This can also be changed by
+  configuring the options of the \texttt{doclicense} package.
+
+  \subsection{Examples} \label{sec:howto:sample}
+
+  Here are some examples of the features provided by the
+  \texttt{\textcolor{OSTBlackberry}{OST}stud} package.
+
+  \subsubsection{Electrodynamics and Physics}
+
+  The notation for vectors is ispired the notation of Prof. H.D. Lang. As we
+  know Faraday's law in its integral form is
+  \[
+    \oint_{\partial A} \vec{E} \dotp d\vec{l}
+      = -\frac{d}{dt} \int_A \vec{B} \dotp d\vec{s},
+  \]
+  however, anyone who has taken ELT3 knows that this expression can become very
+  painful very fast. Thus, we consider only the harmonic solutions in the
+  frequency domain by Fourier transforming this expression, i.e. we define
+  $\underline{\vec{E}}(\omega) = \fourier\{\vec{E}(t)\}$ and similarly
+  $\underline{\vec{B}}(\omega) = \fourier\{\vec{B}(t)\}$ using the convention
+  such that
+  \[
+    \frac{d}{dt} \vec{E} 
+    \quad\corresponds\quad
+    j\omega \underline{\vec{E}}.
+  \]
+
+  This is particularly useful for solving the electromagnetic Wave equation
+  \[
+    \vlaplacian \vec{\tilde{E}} - \mu\sigma \partial_t \vec{\tilde{E}}
+      - \mu\varepsilon \partial_t^2 \vec{\tilde{E}} = \vec{0},
+  \]
+  since the time derivatives become $j\omega$ and $\omega^2$. Then as you will
+  learn for e.g. in the ElMag course $\underline{\vec{\tilde{H}}} = - \curl
+  \underline{\vec{\tilde{E}}} / j\omega \mu_0$).
+
+  \subsubsection{Mathematical Programming}
+
+  Electrical engineers also work with a lot of mathematical programming and
+  optimization problems, such as the linear quadratic regulator controller
+  \[
+    \vec{u}^\star = \argmin_{\vec{u}} \int_0^\infty
+      \mt{\vec{x}} \mx{Q} \vec{x} + \mt{\vec{u}} \mx{R} \vec{u} \, dt,
+  \]
+  or Newton's method
+  \[
+    \vec{x}_{k+1} = \vec{x}_k + \minv{\mx{H}_f}(\vec{x}_k) \grad f(\vec{x}_k)
+  \]
+  where $f: \mathbb{R}^m \to \mathbb{R}$ and $\vec{x}_0$ is the initial guess.
+
+  \subsubsection{Software and Code}
+
+  We do a lot of maths, but sometimes we also write real code, either using
+  really painful langauges such as C\texttt{++} or pseudocode
+  (\textsc{Python}). For example see Fig. \ref{fig:cpp-code}.
+
+  \begin{figure*}
+    \begin{lstlisting}[language=c++]
+#pragma once
+
+#include <memory>
+#include <set>
+
+namespace flat {
+  namespace core {
+    enum class priority_t : unsigned  {
+      max = 0,
+      higher = 1,
+      high = 2,
+      none = 3,
+      low = 4,
+      lower = 5,
+      min = 6,
+    };
+
+    class prioritized {
+    public:
+      const priority_t priority;
+
+      prioritized(priority_t p = priority_t::none) : priority(p) {}
+    };       
+
+    struct prioritize {
+      bool operator()(const prioritized& lhs, const prioritized& rhs) {
+        return lhs.priority < rhs.priority;
+      }
+
+      bool operator()(const std::weak_ptr<prioritized> lhs,
+                      const std::weak_ptr<prioritized> rhs) {
+
+        if (auto l = lhs.lock()) {
+          if (auto r = rhs.lock()) {
+            // if both valid, check their priority
+            // in case they are the same, left is prioritized
+            return l->priority < r->priority;
+          } else {
+            // if right is expired, left is prioritized
+            return true;
+          }
+        } else {
+          // if left is expired, the right is prioritized
+          return false;
+        }
+      }
+    };
+
+    template<typename Prioritized>
+    using queue = std::multiset<Prioritized, prioritize>;
+  }
+} 
+    \end{lstlisting}
+    \caption{
+      An abomination written in modern C\texttt{++}.
+      \label{fig:cpp-code}
+    }
+  \end{figure*}
+
+  \subsection{Example of documents}
+
+  On HSR-Stud's GitHub organization you can find more documents written using
+  (possibly an older version of) this template. For example:
+  \begin{itemize}
+    \item \url{https://github.com/HSR-Stud/RegT4}
+    \item \url{https://github.com/HSR-Stud/FuVar}
+    \item \url{https://github.com/HSR-Stud/DigDes_2021}
+  \end{itemize}
+  Feel free to go there and improve them if you find missing sections or
+  errors.
+
+\end{english}
+
+% End of sample content
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
